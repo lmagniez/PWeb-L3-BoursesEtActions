@@ -12,7 +12,7 @@
 	<body >
 	 <div class="container">
 
-      <form class="form-signin" method="post" action="./testLogin.php" >
+      <form class="form-signin" method="post" action="./BD/BDLogin.php" >
         <h2 class="form-signin-heading" style="text-align: center;">Connection</h2>
         <label for="inputEmail" class="sr-only">Email address</label> <br/>
         	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
