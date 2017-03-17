@@ -1,7 +1,5 @@
 
 <?php
-
-#./xw32df4/
 $dsn = "sqlite:BDD.sqlite3" ;
 $pdo = new PDO($dsn);
 if(!$pdo) echo 'Erreur connection bdd';
@@ -10,7 +8,9 @@ $queryCreateUser = '
 CREATE TABLE IF NOT EXISTS Utilisateur
 (
     idUser INTEGER PRIMARY KEY AUTOINCREMENT,
-    user VARCHAR(100),
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    adressemail VARCHAR(150),
     Argent DECIMAL,
 );';
 
@@ -30,29 +30,14 @@ CREATE TABLE IF NOT EXISTS Action_Utilisateur
 );';
 
 
-$querySelect = 'SELECT * from message;';
+$querySelectUtilisateur = 'SELECT * from Utilisateur;';
+$querySelectAction = 'SELECT * from Action;';
+$querySelectActionUser = 'SELECT * from Action_Utilisateur;';
 
 $prep = $pdo->prepare($queryCreateUser);
-$prep->execute();
+//$prep->execute();
 $prep = $pdo->prepare($queryCreateAction);
-$prep->execute();
+//$prep->execute();
 $prep = $pdo->prepare($queryCreateActionUser);
-$prep->execute();
-
-
-function insert($message,$user,$color){
- //$prep = $pdo->prepare($queryInsert);
- //$prep->bindValue(':msg', $message, PDO::PARAM_STR);
- //$prep->bindValue(':user', $user, PDO::PARAM_STR);
- //$prep->bindValue(':color', $color, PDO::PARAM_STR);
- //$prep->execute();
-}
-
-function recuperer(){
-
-// $prep = $pdo->prepare($querySelect);
-// $prep->execute();
-
- //echo $prep;
-}
+//$prep->execute();
 ?>

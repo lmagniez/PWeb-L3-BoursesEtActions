@@ -1,36 +1,4 @@
-
 <?php
-
-
-	function afficherCookie()
-	{
-
-	}
-
-	function incrementCookie($nom_cookie)
-	{
-		if (isset($_COOKIE[$nom_cookie]))
-		{
-			setcookie("$nom_cookie", $_COOKIE[$nom_cookie]+1, time()+36000);
-		}
-		else
-		{
-			setcookie("$nom_cookie", 0, time()+36000);
-		}
-	}
-
-
-	function is_set($value)
-	{
-		if(isset($_COOKIE[$value]))echo $_COOKIE[$value];
-	}
-
-	function is_setCombo($name, $value)
-	{
-		if($_COOKIE["$name"]==$value)echo "selected=selected";
-	}
-
-
 ?>
 <html>
 	<head>
@@ -44,15 +12,15 @@
 	<body >
 	 <div class="container">
 
-      <form class="form-signin" method="post" action="#" >
+      <form class="form-signin" method="post" action="./testLogin.php" >
         <h2 class="form-signin-heading" style="text-align: center;">Connection</h2>
         <label for="inputEmail" class="sr-only">Email address</label> <br/>
-        	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
 
         <label for="inputPassword" class="sr-only">Password</label>	<br/>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required><br/>
-        
-        <button class="btn btn-lg btn-primary btn-block" id="valider" type="submit">Sign in</button>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pws1" required><br/>
+
+        <button class="btn btn-lg btn-primary btn-block" id="valider" type="submit">Sign in</button><br/>
         <a class="lien" href="./register.php">Enregistrez vous</a>
       </form>
 
