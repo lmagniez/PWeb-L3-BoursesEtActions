@@ -3,7 +3,6 @@
 
 	incrementCookie("nb_visite");
 
-
 	function afficherCookie()
 	{
 		if(isset($_COOKIE["pseudo"])&&isset($_COOKIE["color-pseudo"]))
