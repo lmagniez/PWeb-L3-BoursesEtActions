@@ -12,16 +12,16 @@ if(isset($_POST)){
 
 	if(sizeof($res)==0){
 		$_SESSION['messageConnection']="Adresse Non repertoriée".PHP_EOL;
-		header('Location: http://localhost:8888/login.php');
+		header('Location: ./../login.php');
 		return;
 	}
 
 	if($res[0]["password"] != $_POST["mdp"]){
 		$_SESSION['messageConnection']="Mot de passe incorrect".PHP_EOL;
-		header('Location: http://localhost:8888/login.php');
+		header('Location: ./../login.php');
 		return;
 	}
 
 	$_SESSION['messageConnection']="good";
-	header('Location: http://localhost:8888/login.php');
+	header('Location: ./../login.php');
 }

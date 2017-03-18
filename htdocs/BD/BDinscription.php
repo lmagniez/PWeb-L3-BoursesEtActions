@@ -8,7 +8,7 @@ $InsertInscription = 'INSERT INTO Utilisateur (nom , prenom, password ,  adresse
 if(isset($_POST)){
 	if($_POST["mdp"]!=$_POST["mdpconfirm"]){
 		$_SESSION['messageInscription']= "Mot de passe non identique".PHP_EOL;
-		header('Location: http://localhost:8888/register.php');
+		header('Location: ./../register.php');
 		return;
 	}
 
@@ -20,7 +20,7 @@ if(isset($_POST)){
 	
 	if(sizeof($prep->fetchAll())!=0){
 		$_SESSION['messageInscription']= "Adresse Mail déja presente".PHP_EOL;
-		header('Location: http://localhost:8888/register.php');
+		header('Location: ./../register.php');
 		return;
 	}
 	
@@ -33,5 +33,5 @@ if(isset($_POST)){
  	$prep->execute();
 
  	$_SESSION['messageInscription']="Inscription Reussie".PHP_EOL;
- 	header('Location: http://localhost:8888/login.php');
+ 	header('Location: ./../login.php');
 }

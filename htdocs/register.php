@@ -3,7 +3,7 @@ session_start();
 
 function messageEreur(){
     if(isset($_SESSION['messageInscription'])){
-        return "<div class=\"alert alert-danger\" style=\"text-align:center;\" ><strong>Danger!</strong> ". $_SESSION['messageConnection'] ."</div>";
+        return "<div class=\"alert alert-danger\" style=\"text-align:center;\" ><strong>Danger!</strong> ". $_SESSION['messageInscription'] ."</div>";
     }
 }
 
