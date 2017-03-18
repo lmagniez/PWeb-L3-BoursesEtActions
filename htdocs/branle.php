@@ -8,8 +8,6 @@
 		 
 		 <link href="./css/login.css" rel="stylesheet">
 	</head>
-
-
 	<body >
 	 <div class="container">
 	 <h1>Branle :D </h1>

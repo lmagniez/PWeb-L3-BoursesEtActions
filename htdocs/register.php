@@ -1,6 +1,13 @@
 <?php
-?>
-<html>
+session_start();
+
+function messageEreur(){
+    if(isset($_SESSION['messageInscription'])){
+        return "<div class=\"alert alert-danger\" style=\"text-align:center;\" ><strong>Danger!</strong> ". $_SESSION['messageConnection'] ."</div>";
+    }
+}
+
+?><html>
 	<head>
 		<meta charset="utf-8"/>
 		 <link href="./bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,11 +33,11 @@
         	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="Mail" required autofocus>
 
         <label for="inputPassword" class="sr-only">Password</label>	<br/>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pws1" required autofocus>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="mdp" required autofocus>
 
         <label for="inputPassword" class="sr-only">Confirmer Password</label>	<br/>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Confirmer Password" rname="pws2" equired><br/>
-
+        <input type="password" id="inputPassword" class="form-control" placeholder="Confirmer Password" name="mdpconfirm" required autofocus><br/>
+        <?php echo messageEreur(); ?>
         <button class="btn btn-lg btn-primary btn-block" id="valider" type="submit">Register</button><br/>
         <a class="lien" href="./login.php">Connectez vous</a>
       </form>

@@ -1,4 +1,3 @@
-
 <?php
 $dsn = "sqlite:BDD.sqlite3" ;
 $pdo = new PDO($dsn);
@@ -10,6 +9,7 @@ CREATE TABLE IF NOT EXISTS Utilisateur
     idUser INTEGER PRIMARY KEY AUTOINCREMENT,
     nom VARCHAR(100),
     prenom VARCHAR(100),
+    password VARCHAR(100),
     adressemail VARCHAR(150),
     Argent DECIMAL
 );';
@@ -43,4 +43,3 @@ $prep = $pdo->prepare($queryCreateAction);
 $prep->execute();
 $prep = $pdo->prepare($queryCreateActionUser);
 $prep->execute();
-?>

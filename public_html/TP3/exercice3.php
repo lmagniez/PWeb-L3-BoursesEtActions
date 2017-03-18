@@ -4,8 +4,6 @@
 	updateInfo();
 	incrementCookie("nb_visite");
 
-
-
 	function afficherCookie()
 	{
 		if(isset($_COOKIE["login"]))
