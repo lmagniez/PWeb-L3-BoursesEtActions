@@ -4,6 +4,12 @@ a:hover , a:visited, a {
 	color: white ;
 }
 
+.nav-tabs a:hover , a:visited, a {
+	display:block;
+	text-decoration: none;
+	color: black ;
+}
+
 h1{
 	font-size: 350%;
 }

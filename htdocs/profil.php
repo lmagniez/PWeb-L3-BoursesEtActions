@@ -14,44 +14,44 @@ function messageEreur(){
 ?><img class="baniere" src="./Image/profil.jpg"  width="100%" height="300px">
 <body >
    <div class="container">
-        <h1 style="text-align:center;">Profil</h1>
+        <h1 style="text-align:center;">Mon Compte</h1>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#actions">Action</a></li>
+          <li><a data-toggle="tab" href="#profil">Profil</a></li>
+        </ul>
 
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs" id="mytab">
-              <li><a href="#actions" data-toggle="mytab">Actions</a></li>
-              <li class="active"><a href="#profil" data-toggle="mytab">Profil</a></li>
-          </ul>
-          <!-- Tab panes -->
-          <div class="tab-content">
-              <div id="actions" class="tab-pane fade tabprofildiv">.Actions.</div>
-              
-              <div id="profil" class="tab-pane fade in active">
-                <div id="elementconfig" class="row tabprofildiv">
-                <?php echo messageEreur(); ?>
+      <div class="tab-content">
+
+          <div id="actions" class="tab-pane fade in active">
+              <h3>HOME</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+
+
+           <div id="profil" class="tab-pane fade">
+              <div id="elementconfig" class="row tabprofildiv">
+                  <?php echo messageEreur(); ?>
                   <div class="col-xs-12 col-md-7 col-md-offset-1">
                     <h4>Nom: </h4><?php echo $_SESSION["nom"]?> </br>
                     <h4>Prenom: </h4> <?php echo $_SESSION["prenom"]?></br>
                     <h4>Argent: </h4> <?php echo $_SESSION["argent"]?></br>
                     <h4>Adresse Mail</h4> <?php echo $_SESSION["mail"]?> </br>
                   </div>
+                  
                   <div class="col-xs-12 col-md-4 tabprofildiv">
                     <img class="baniere" src="./Image/avatar.png"  width="100%" height="250px">
                   </div>
+                  
                   <button class="btn btn-primary btn-lg btn-block" onClick="modification()" id="valider" type="submit">Modifier</button><br/>
-                </div>
               </div>
-
           </div>
+
+      </div>
+   
     </div> <!-- /container -->
+  
   </body>
   <footer>
-      <script>
-      $('#mytab a').click(function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-      })
-      </script>
-
       <script>
         var modif='<form class="form-signin" method="post" action="./BD/BDupdate.php" style="border-radius: 20px;">'
       +'<label for="inputEmail" class="sr-only">Nom</label> <br/><input type="text" id="inputEmail" class="form-control" placeholder="Nom"  value="<?php echo $_SESSION["nom"] ?> " name="Nom" required autofocus>'
@@ -64,8 +64,6 @@ function messageEreur(){
 function modification() {
   document.getElementById('elementconfig').innerHTML = modif;
 }
-
-      </script>
+  </script>
   </footer>
 </html>
-

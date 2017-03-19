@@ -13,9 +13,16 @@ function recupNomPrenom(){
 ?><html>
 	<head>
 		<meta charset="utf-8"/>
-		 <link href="./bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-		 <link href="./bootstrap-3.3.7-dist/js/bootstrap.min.js" rel="stylesheet">
-		 <script type="text/javascript" src="./bootstrap-3.3.7-dist/jquery-3.2.0.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      
+    <!-- <link href="./bootstrap-3.3.7-dist/jquery-3.2.0.min.js">
+     <link href="./bootstrap-3.3.7-dist/js/bootstrap.min.js" rel="stylesheet"> -->
+  
+
+
 		 <link href="./css/image.css" rel="stylesheet">
 		<link href="./css/accueil.css" rel="stylesheet">
     <link href="./css/profil.css" rel="stylesheet">
