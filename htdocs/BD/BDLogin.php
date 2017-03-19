@@ -1,7 +1,7 @@
 <?php
 require_once("BD.php");
 session_start();
-$queryRecupUser = 'SELECT password from Utilisateur where adressemail = :mail ;';
+$queryRecupUser = 'SELECT * from Utilisateur where adressemail = :mail ;';
 
 if(isset($_POST)){
 	global $pdo;
@@ -23,5 +23,7 @@ if(isset($_POST)){
 	}
 
 	$_SESSION['messageConnection']="good";
+	$_SESSION['nom']=$res[0]["nom"];
+	$_SESSION['prenom']=$res[0]["prenom"];
 	header('Location: ./../login.php');
 }

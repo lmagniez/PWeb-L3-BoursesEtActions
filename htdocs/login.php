@@ -1,11 +1,14 @@
 <?php
 session_start();
+if(isset($_SESSION['messageConnection'])){
+    if($_SESSION['messageConnection'] == "good"){
+            header('Location: ./accueil.php');
+            exit();
+    }
+}
 
 function messageEreur(){
     if(isset($_SESSION['messageConnection'])){
-        if($_SESSION['messageConnection'] == "good" ){
-            return "<div class=\"alert alert-success\" style=\"text-align:center;\"><strong>Success!</strong> ". $_SESSION['messageConnection'] ."</div>";
-        }
         if($_SESSION['messageConnection'] == "Inscription Reussie" ){
             return "<div class=\"alert alert-success\" style=\"text-align:center;\"><strong>Success!</strong> ". $_SESSION['messageConnection'] ."</div>";
         }
@@ -13,8 +16,7 @@ function messageEreur(){
             return "<div class=\"alert alert-danger\" style=\"text-align:center;\" ><strong>Danger!</strong> ". $_SESSION['messageConnection'] ."</div>";
         }
     }
-}
-?><html>
+}?><html>
 	<head>
 		<meta charset="utf-8"/>
 		 <link href="./bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,9 +25,9 @@ function messageEreur(){
 	</head>
 
 
-	<body >
+	<body background="./Image/fond.jpg">
 	 <div class="container">
-      <form class="form-signin" method="post" action="./BD/BDLogin.php" >
+      <form class="form-signin" method="post" action="./BD/BDLogin.php" style="border-radius: 20px;">
         <h2 class="form-signin-heading" style="text-align: center;">Connection</h2>
         <label for="inputEmail" class="sr-only">Email address</label> <br/>
         	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="Mail" required autofocus>
