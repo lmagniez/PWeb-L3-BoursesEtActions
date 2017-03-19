@@ -1,0 +1,54 @@
+[
+ {
+	"name": "Facebook",
+	"symbole": "FB",
+	"type": "Action",
+	"données": [
+		{
+		"ask":0,
+		"bid":0,
+		"change":0,
+		"changeP":0.0,
+		"date": "3/17/2017",
+		"time":"4:00pm"
+		
+		}
+		
+	]
+   
+ },
+ 
+ {
+	"name": "Apple",
+	"symbole": "AAPL",
+	"type": "Action",
+	"données": [	]
+   
+ },
+ 
+ {
+	"name": "Microsoft",
+	"symbole": "MSFT",
+	"type": "Action",
+	"données": [	]
+   
+ },
+ 
+ {
+	"name": "Google",
+	"symbole": "GOOGL",
+	"type": "Action",
+	"données": [	]
+   
+ },
+ 
+ {
+	"name": "Gold Apr 17",
+	"symbole": "GC=F",
+	"type": "Marché",
+	"données": [	]
+   
+ }
+
+
+]
