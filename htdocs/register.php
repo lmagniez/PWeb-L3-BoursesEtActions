@@ -1,5 +1,11 @@
 <?php
 session_start();
+if(isset($_SESSION['messageConnection'])){
+    if($_SESSION['messageConnection'] == "good"){
+        header('Location: ./accueil.php');
+        exit();
+    }
+}
 
 function messageEreur(){
     if(isset($_SESSION['messageInscription'])){
@@ -18,10 +24,10 @@ function messageEreur(){
 	</head>
 
 
-	<body >
+	<body background="./Image/fond.jpg">
 	 <div class="container">
 
-      <form class="form-signin" method="post" action="./BD/BDinscription.php" >
+      <form class="form-signin" method="post" action="./BD/BDinscription.php" style="border-radius: 20px;">
         <h2 class="form-signin-heading" style="text-align: center;">Enregistrer</h2>
         <label for="inputEmail" class="sr-only">Nom</label> <br/>
         	<input type="text" id="inputEmail" class="form-control" placeholder="Nom" name="Nom" required autofocus>
