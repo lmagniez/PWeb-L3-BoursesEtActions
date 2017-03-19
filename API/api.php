@@ -27,60 +27,34 @@
 //c1: Change c1
 //p2: change pourcent p2
 
+function recupCSV($symbole){
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "http://finance.yahoo.com/d/quotes.csv?s=GOOGL,AAPL,MSFT,FB,GC=F&f=abo");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch,CURLOPT_FOLLOWLOCATION,true);
-$csvData = curl_exec($ch);
-//$parsed_json = json_decode($parsed_json);
+	$ch = curl_init();
+	//curl_setopt($ch, CURLOPT_URL, "http://finance.yahoo.com/d/quotes.csv?s=GOOGL,AAPL,MSFT,FB,GC=F&f=abo");
+	curl_setopt($ch, CURLOPT_URL, "http://finance.yahoo.com/d/quotes.csv?s="+symbole+"&f=abo");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch,CURLOPT_FOLLOWLOCATION,true);
+	$csvData = curl_exec($ch);
+	//$parsed_json = json_decode($parsed_json);
 
-var_dump($csvData);
-echo '
-';
+	var_dump($csvData);
+	echo '
+	';
+	//$tab=str_getcsv($parsed_json," ");
 
+	$lines = explode("\n", $csvData);
 
-//$tab=str_getcsv($parsed_json," ");
+	$array = array();
+	foreach ($lines as $line) {
+		$array[] = str_getcsv($line);
+	}
+	print_r($array);
 
-$lines = explode("\n", $csvData);
+	curl_close($ch);
 
-
-$array = array();
-foreach ($lines as $line) {
-    $array[] = str_getcsv($line);
+	echo "ok";
 }
-print_r($array);
 
-
-
-/*
-foreach($parsed_json->results->collection1 as $collection){
-    echo $collection->title->text . '<br>';
-    echo $collection->title->href . '<br>';
-    echo $collection->posted . '<br><br>';
-}
-*/
-curl_close($ch);
-
-echo "ok";
-
-?>
-
-<?php
-
-var_dump($_POST);
-
-if (array_key_exists('foo', $_POST) && array_key_exists('bar', $_POST)) {
-
-    $foo = $_POST['foo'];
-    $bar = ($_POST['bar']);
-    // do stuff with params
-
-    echo 'Yes, it works!';
-
-} else {
-    echo 'Invalid parameters!';
-}
 ?>
 
 <!DOCTYPE html>
@@ -97,11 +71,26 @@ if (array_key_exists('foo', $_POST) && array_key_exists('bar', $_POST)) {
         <section  class="container">
             <article name="données" class="well form-inline pull-left col-lg-5">
 				<script type="text/javascript" src="api.js"></script>
-                <button class="btn btn-primary" type="submit" onclick="executerRequete(lireSuivant)"><span class="glyphicon glyphicon-play"> </span> Lecture avant</button>
-                <button class="btn btn-primary" type="submit" onclick="executerRequete(lirePrecedent)"><span class="glyphicon glyphicon-step-backward"> </span> Lecture arrière</button>
+                
+                
+                <button class="btn btn-primary" type="submit" onclick="executerRequete(getIds)">
+				<span class="glyphicon glyphicon-step-backward"> 
+				</span> Récup Ids</button>
 
-				<button class="btn btn-primary" type="submit" onclick="executerRequete(lireJoueurs)"><span class="glyphicon glyphicon-step-backward"> </span> Récup équipe</button>
-				<button class="btn btn-primary" type="submit" onclick="executerRequete(addDonneeToCatalogue('FB', 3, 3, 3, 4, '3/03/3123', '3:00pm'))"><span class="glyphicon glyphicon-step-backward"> </span> Test </button>
+				<button class="btn btn-primary" type="submit" 
+				onclick="executerRequete(afficherAction('FB'))">
+				<span class="glyphicon glyphicon-step-backward"> 
+				</span> Récup FB</button>
+				
+				<button class="btn btn-primary" type="submit" 
+				onclick="executerRequete(addDonneeToCatalogue('FB', 3, 3, 3, 4, '3/03/3123', '3:00pm'))">
+				<span class="glyphicon glyphicon-step-backward"> 
+				</span> Test save </button>
+				
+				<button class="btn btn-primary" type="submit" 
+				onclick="executerRequete(recupCSV('FB'))">
+				<span class="glyphicon glyphicon-step-backward"> 
+				</span> Test Requete </button>
 				
 				
 				
@@ -112,9 +101,18 @@ if (array_key_exists('foo', $_POST) && array_key_exists('bar', $_POST)) {
             </article>
         </section>
 
-        <div id="equipe">
+        
+        
+        
+        <div id="ids">
 
         </div>
+        
+        <div id="element">
+
+        </div>
+        
+        
 
     </body>
 </html>
