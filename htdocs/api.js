@@ -460,6 +460,13 @@ function afficherActionAccueil(symbole) {
 	buttonAchat.appendChild(textB1);
 	content.appendChild(buttonAchat);
 	
+	var buttonAchat = document.createElement("button");
+	buttonAchat.setAttribute("name","achat-action");
+	buttonAchat.setAttribute("value",elt.données[elt.données.length-1].ask);
+	var textB1=document.createTextNode("Acheter");
+	buttonAchat.appendChild(textB1);
+	content.appendChild(buttonAchat);
+	
 	body.appendChild(content);
 	
 	
