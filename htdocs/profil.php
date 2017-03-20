@@ -11,8 +11,11 @@ function messageEreur(){
     }
 }
 
-?><img class="baniere" src="./Image/profil.jpg"  width="100%" height="300px">
-<body >
+
+?>
+
+<img class="baniere" src="./Image/profil.jpg"  width="100%" height="300px">
+<body onload="init(); executerRequete(recupAllCSV); executerRequete(getIdsPerso(['FB','GC=F']))" >
    <div class="container">
         <h1 style="text-align:center;">Mon Compte</h1>
         <ul class="nav nav-tabs">
@@ -25,6 +28,17 @@ function messageEreur(){
           <div id="actions" class="tab-pane fade in active">
               <h3>HOME</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<div id="ids"></div>
+				<br/>
+				<div id="element"></div>
+				<div id="buttons"></div>
+				<br/>
+				<br/>
+				<div id="chart">
+					<canvas id="chart-bid" width="100" height="100"></canvas>
+					<canvas id="chart-ask" width="100" height="100"></canvas>
+				</div>
+          
           </div>
 
 

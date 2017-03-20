@@ -1,14 +1,14 @@
 <?php
 require_once("header.php");
 ?><img class="baniere" src="./Image/bourse.jpg"  width="100%" height="300px">
-<body >
+<body  onload="init(); executerRequete(recupAllCSV); executerRequete(getIdsAccueil)">
    <div class="container">
       <div class="row">
         <h1 style="text-align:center;">Bourse</h1>
       </div>
         <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#bourse">Toute la Bourse</a></li>
-          <li><a data-toggle="tab" href="#recherche">Recherche</a></li>
+          <li class="active"><a data-toggle="tab" href="#bourse" onclick="executerRequete(getIdsAccueil)">Toute la Bourse</a></li>
+          <li><a data-toggle="tab" href="#recherche" onclick="executerRequete(getIdsMarches)">Recherche</a></li>
         </ul>
 
       <div class="tab-content">
@@ -24,6 +24,20 @@ require_once("header.php");
           </div>
 
       </div>
+      
+        <div id="ids"></div>
+        <br/>
+        <div id="element"></div>
+        <div id="buttons"></div>
+        <br/>
+        <br/>
+        <div id="chart">
+			<canvas id="chart-bid" width="100" height="100"></canvas>
+			<canvas id="chart-ask" width="100" height="100"></canvas>
+		</div>
+
+      
+      
    
     </div> <!-- /container -->
   </body>
