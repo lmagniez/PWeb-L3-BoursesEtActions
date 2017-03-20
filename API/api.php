@@ -63,11 +63,12 @@ function recupCSV($symbole){
 		<meta charset="utf-8">
 		<title>Jeux</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
 	</head>
 	
 	
-	<body>
+	<body onload="executerRequete(getIds)">
         <section  class="container">
             <article name="données" class="well form-inline pull-left col-lg-5">
 				<script type="text/javascript" src="api.js"></script>
@@ -88,7 +89,7 @@ function recupCSV($symbole){
 				</span> Test save </button>
 				
 				<button class="btn btn-primary" type="submit" 
-				onclick="executerRequete(recupCSV('FB'))">
+				onclick="executerRequete(recupCSV1())">
 				<span class="glyphicon glyphicon-step-backward"> 
 				</span> Test Requete </button>
 				
@@ -111,6 +112,11 @@ function recupCSV($symbole){
         <div id="element">
 
         </div>
+        
+        <div id="chart">
+			<canvas id="chart-bid" width="100" height="100"></canvas>
+			<canvas id="chart-ask" width="100" height="100"></canvas>
+		</div>
         
         
 
