@@ -52,8 +52,19 @@ function getEltBySymbole(symbole){
 
 function addDonneeToCatalogue(symbole, a, b, c, cP, d, t, reald, realt) {
 
-	console.log(catalogue);
-
+	if(a=="N/A"){
+		a="0";
+	}
+	if(b=="N/A"){
+		b="0";
+	}
+	if(c=="N/A"){
+		c="0";
+	}
+	if(cP=="N/A"){
+		c="0";
+	}
+	
 	var donnee= {
 		ask:a,
 		bid:b,
@@ -97,7 +108,6 @@ function checkValueExists(symbole, value){
 
 
 function recupCSV1(){
-	console.log(">>>");
 	var value = document.getElementById("select-id").value;
 	console.log(value);
 	recupCSV(value);
@@ -187,7 +197,7 @@ function loadXMLDoc() {
 
 //créé un select comportant les différents nom des actions
 //créé dans <div id=ids></div>
-function getIds(){
+function getIdsAccueil(){
 	
 	var body = document.getElementById("ids");
 	
@@ -226,7 +236,7 @@ function getIds(){
 	
 	
 	
-	btn.addEventListener("click", function(){afficherActionFromSelect()});
+	btn.addEventListener("click", function(){afficherActionAccueilFromSelect()});
 	var txt= document.createTextNode("Afficher");
 	btn.appendChild(txt);
 	
@@ -238,12 +248,123 @@ function getIds(){
 	
 }
 
-function afficherActionFromSelect(){
-	var value = document.getElementById("select-id").value;
-	afficherAction(value);
+//créé un select comportant les différents nom des actions
+//créé dans <div id=ids></div>
+//{'FB','GC=F'}
+function getIdsPerso(tab){
+	
+	console.log("getids perso");
+	
+	var body = document.getElementById("ids");
+	
+	//suppression ancienne valeur
+	var del= document.getElementById("select-id");
+	if(del!=null)
+		body.removeChild(del);
+	del=document.getElementById("button-id");
+	if(del!=null)
+		body.removeChild(del);
+	
+	
+	//creation select
+	var select = document.createElement("select");
+	select.setAttribute("id","select-id");
+	select.setAttribute("name","select-name");
+	body.appendChild(select);
+	
+	//option
+	for(var i=0; i<tab.length; i++) {
+		
+		var elt=getEltBySymbole(tab[i]);
+		var opt=document.createElement("option");
+		opt.setAttribute("value",elt.symbole);
+		var txt=document.createTextNode(elt.name);
+		select.appendChild(opt);
+		opt.appendChild(txt);
+		
+	}
+	
+	
+	var btn= document.createElement("button");
+	btn.setAttribute("id","button-id");
+	//btn.addEventListener("click", afficherAction(document.getElementById("select-id").value));
+	
+	
+	
+	btn.addEventListener("click", function(){afficherActionPersoFromSelect()});
+	var txt= document.createTextNode("Afficher");
+	btn.appendChild(txt);
+	
+	
+
+	body.appendChild(btn);
+	
+	
+	
 }
 
-function afficherAction(symbole) {
+function afficherActionAccueilFromSelect(){
+	var value = document.getElementById("select-id").value;
+	afficherActionAccueil(value);
+}
+
+function afficherActionPersoFromSelect(){
+	var value = document.getElementById("select-id").value;
+	afficherActionPerso(value);
+}
+
+function afficherActionPerso(symbole) {
+	
+	executerRequete(recupCSV1());
+	
+	//recupère l'action
+	var elt=getEltBySymbole(symbole);
+	
+	var body = document.getElementById("element");
+	
+	//supprime l'ancien affichage
+	var del=document.getElementById("elt-content");
+	if(del!=null){
+		body.removeChild(del);
+	}
+	
+	var body2 = document.getElementById("valider-button");
+	
+	//supprime l'ancien affichage
+	var del=document.getElementById("ajout-favoris");
+	if(del!=null){
+		body2.removeChild(del);
+	}
+	
+	var content= document.createElement("div");
+	content.setAttribute("id","elt-content");
+	
+	var name = document.createTextNode("Nom: "+elt.name);
+	content.appendChild(name);
+	var symbole = document.createTextNode("Symbole: "+elt.symbole);
+	content.appendChild(symbole);
+	var type = document.createTextNode("Type: "+elt.type);
+	content.appendChild(type);
+	
+	
+	//creation bouton
+	
+	var buttonAchat = document.createElement("button");
+	buttonAchat.setAttribute("name","ajout-favoris");
+	buttonAchat.setAttribute("value",elt.symbole);
+	var textB1=document.createTextNode("Ajouter aux favoris");
+	buttonAchat.appendChild(textB1);
+	content.appendChild(buttonAchat);
+	
+	body.appendChild(content);
+	
+	
+	graph(elt);
+
+}
+
+
+function afficherActionAccueil(symbole) {
 
 	
 	executerRequete(recupCSV1());
@@ -311,10 +432,9 @@ function afficherAction(symbole) {
 	
 
 }
-var today = moment().format('D MM, YYYY, HH:mm');
-console.log("today"+today);
+
+
 init();
-//executerRequete();
 
 
 
@@ -368,7 +488,8 @@ function graph(elt){
 	Chart.defaults.global.tooltipCornerRadius = 0;
 	Chart.defaults.global.tooltipTitleFontStyle = "normal";
 	Chart.defaults.global.tooltipFillColor = "rgba(0,160,0,0.8)";
-	Chart.defaults.global.animationEasing = "easeOutBounce";
+	Chart.defaults.global.animation = false;
+	//Chart.defaults.global.animationEasing = "easeOutBounce";
 	Chart.defaults.global.responsive = true;
 	Chart.defaults.global.scaleLineColor = "black";
 	Chart.defaults.global.scaleFontSize = 16;

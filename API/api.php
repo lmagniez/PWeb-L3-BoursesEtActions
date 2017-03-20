@@ -68,15 +68,21 @@ function recupCSV($symbole){
 	</head>
 	
 	
-	<body onload="executerRequete(getIds)">
+	<body onload="executerRequete(getIdsAccueil)">
         <section  class="container">
             <article name="données" class="well form-inline pull-left col-lg-5">
 				<script type="text/javascript" src="api.js"></script>
                 
                 
-                <button class="btn btn-primary" type="submit" onclick="executerRequete(getIds)">
+                <button class="btn btn-primary" type="submit" onclick="executerRequete(getIdsAccueil)">
 				<span class="glyphicon glyphicon-step-backward"> 
-				</span> Récup Ids</button>
+				</span> Récup Ids Accueil</button>
+				
+				<button class="btn btn-primary" type="submit" onclick="executerRequete(getIdsPerso(['FB','GC=F']))">
+				<span class="glyphicon glyphicon-step-backward"> 
+				</span> Récup Ids Page perso</button>
+				
+		
 
 				<button class="btn btn-primary" type="submit" 
 				onclick="executerRequete(afficherAction('FB'))">
