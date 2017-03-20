@@ -68,7 +68,7 @@ function recupCSV($symbole){
 	</head>
 	
 	
-	<body onload="executerRequete(getIdsAccueil)">
+	<body onload="init(); executerRequete(recupAllCSV); executerRequete(getIdsAccueil)">
         <section  class="container">
             <article name="données" class="well form-inline pull-left col-lg-5">
 				<script type="text/javascript" src="api.js"></script>
@@ -82,12 +82,19 @@ function recupCSV($symbole){
 				<span class="glyphicon glyphicon-step-backward"> 
 				</span> Récup Ids Page perso</button>
 				
-		
+				<button class="btn btn-primary" type="submit" 
+				onclick="executerRequete(getIdsMarches)">
+				<span class="glyphicon glyphicon-step-backward"> 
+				</span> Récup Ids Marchés</button>
+
 
 				<button class="btn btn-primary" type="submit" 
 				onclick="executerRequete(afficherAction('FB'))">
 				<span class="glyphicon glyphicon-step-backward"> 
 				</span> Récup FB</button>
+				
+				
+				
 				
 				<button class="btn btn-primary" type="submit" 
 				onclick="executerRequete(addDonneeToCatalogue('FB', 3, 3, 3, 4, '3/03/3123', '3:00pm'))">
