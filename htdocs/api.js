@@ -75,8 +75,13 @@ function addDonneeToCatalogue(symbole, a, b, c, cP, d, t, reald, realt) {
 		
 	};
 	
+	
 	for(var i=0; i<catalogue.length; i++){
 		if(catalogue[i].symbole==symbole){
+			
+			while(catalogue[i].données.length>15){
+				catalogue[i].données.splice(0,1);
+			}
 			catalogue[i].données.push(donnee);
 		}
 	}
@@ -424,16 +429,27 @@ function afficherActionAccueil(symbole) {
 	var content= document.createElement("div");
 	content.setAttribute("id","elt-content");
 	
+	var contentUl= document.createElement("ul");
+	var listeName= document.createElement("li");
+	var listeSym= document.createElement("li");
+	var listeType= document.createElement("li");
+	var listeChange= document.createElement("li");
+	
 	var name = document.createTextNode("Nom: "+elt.name);
-	content.appendChild(name);
+	listeName.appendChild(name);
 	var symbole = document.createTextNode("Symbole: "+elt.symbole);
-	content.appendChild(symbole);
+	listeSym.appendChild(symbole);
 	var type = document.createTextNode("Type: "+elt.type);
-	content.appendChild(type);
+	listeType.appendChild(type);
 	var change = document.createTextNode(" Changement"+elt.données[elt.données.length-1].change
 	+" ("+elt.données[elt.données.length-1].changeP+")");
-	content.appendChild(change);
+	listeChange.appendChild(change);
 	
+	contentUl.appendChild(listeName);
+	contentUl.appendChild(listeSym);
+	contentUl.appendChild(listeType);
+	contentUl.appendChild(listeChange);
+	content.appendChild(contentUl);
 	
 	//creation bouton
 	
@@ -487,13 +503,28 @@ function afficherActionPerso(symbole) {
 	var content= document.createElement("div");
 	content.setAttribute("id","elt-content");
 	
-	var name = document.createTextNode("Nom: "+elt.name);
-	content.appendChild(name);
-	var symbole = document.createTextNode("Symbole: "+elt.symbole);
-	content.appendChild(symbole);
-	var type = document.createTextNode("Type: "+elt.type);
-	content.appendChild(type);
 	
+	var contentUl= document.createElement("ul");
+	var listeName= document.createElement("li");
+	var listeSym= document.createElement("li");
+	var listeType= document.createElement("li");
+	var listeChange= document.createElement("li");
+	
+	var name = document.createTextNode("Nom: "+elt.name);
+	listeName.appendChild(name);
+	var symbole = document.createTextNode("Symbole: "+elt.symbole);
+	listeSym.appendChild(symbole);
+	var type = document.createTextNode("Type: "+elt.type);
+	listeType.appendChild(type);
+	var change = document.createTextNode(" Changement"+elt.données[elt.données.length-1].change
+	+" ("+elt.données[elt.données.length-1].changeP+")");
+	listeChange.appendChild(change);
+	
+	contentUl.appendChild(listeName);
+	contentUl.appendChild(listeSym);
+	contentUl.appendChild(listeType);
+	contentUl.appendChild(listeChange);
+	content.appendChild(contentUl);
 	
 	//creation bouton
 	

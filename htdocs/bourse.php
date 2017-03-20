@@ -32,8 +32,8 @@ require_once("header.php");
         <br/>
         <br/>
         <div id="chart">
-			<canvas id="chart-bid" width="100" height="100"></canvas>
-			<canvas id="chart-ask" width="100" height="100"></canvas>
+			<canvas id="chart-bid" width="200" height="200"></canvas>
+			<canvas id="chart-ask" width="200" height="200"></canvas>
 		</div>
 
       
