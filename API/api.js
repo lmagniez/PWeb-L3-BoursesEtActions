@@ -260,6 +260,19 @@ function afficherAction(symbole) {
 		body.removeChild(del);
 	}
 	
+	var body2 = document.getElementById("valider-button");
+	
+	//supprime l'ancien affichage
+	var del=document.getElementById("achat-action");
+	if(del!=null){
+		body2.removeChild(del);
+	}
+	del=document.getElementById("vente-action");
+	if(del!=null){
+		body2.removeChild(del);
+	}
+	
+	
 	
 	
 	var content= document.createElement("div");
@@ -272,22 +285,22 @@ function afficherAction(symbole) {
 	var type = document.createTextNode("Type: "+elt.type);
 	content.appendChild(type);
 	
-	var content2=document.createElement("div");
-	content2.setAttribute("id","valider-button");
+	
+	//creation bouton
 	
 	var buttonAchat = document.createElement("button");
 	buttonAchat.setAttribute("name","achat-action");
 	buttonAchat.setAttribute("value",elt.données[elt.données.length-1].ask);
 	var textB1=document.createTextNode("Acheter");
 	buttonAchat.appendChild(textB1);
-	content2.appendChild(buttonAchat);
+	content.appendChild(buttonAchat);
 	
 	var buttonVente = document.createElement("button");
 	buttonVente.setAttribute("name","vente-action");
 	buttonVente.setAttribute("value",elt.données[elt.données.length-1].bid);
 	var textB2=document.createTextNode("Vendre");
 	buttonVente.appendChild(textB2);
-	content2.appendChild(buttonVente);
+	content.appendChild(buttonVente);
 	
 	
 	body.appendChild(content);

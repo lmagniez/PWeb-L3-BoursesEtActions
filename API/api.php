@@ -113,6 +113,12 @@ function recupCSV($symbole){
 
         </div>
         
+        <div id="buttons">
+
+        </div>
+        
+        
+        
         <div id="chart">
 			<canvas id="chart-bid" width="100" height="100"></canvas>
 			<canvas id="chart-ask" width="100" height="100"></canvas>
