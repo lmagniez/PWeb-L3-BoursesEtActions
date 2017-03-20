@@ -400,6 +400,9 @@ function afficherActionAccueil(symbole) {
 	content.appendChild(symbole);
 	var type = document.createTextNode("Type: "+elt.type);
 	content.appendChild(type);
+	var change = document.createTextNode(" Changement"+elt.données[elt.données.length-1].change
+	+" ("+elt.données[elt.données.length-1].changeP+")");
+	content.appendChild(change);
 	
 	
 	//creation bouton
