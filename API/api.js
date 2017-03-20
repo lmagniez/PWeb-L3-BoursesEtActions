@@ -304,7 +304,6 @@ function afficherAction(symbole) {
 	
 	
 	body.appendChild(content);
-	body.appendChild(content2);
 	
 	
 	graph(elt);
