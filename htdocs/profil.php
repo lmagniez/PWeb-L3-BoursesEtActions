@@ -69,11 +69,12 @@ function messageEreur(){
   <footer>
       <script>
         var modif='<form class="form-signin" method="post" action="./BD/BDupdate.php" style="border-radius: 20px;">'
-      +'<label for="inputEmail" class="sr-only">Nom</label> <br/><input type="text" id="inputEmail" class="form-control" placeholder="Nom"  value="<?php echo $_SESSION["nom"] ?> " name="Nom" required autofocus>'
-      +'<label for="inputEmail" class="sr-only">Prenom</label> <br/><input type="text" id="inputEmail" class="form-control" placeholder="Prenom" value="<?php echo $_SESSION["prenom"]?>" name="Prenom" required autofocus>'
+      +'<label for="inputNom" class="sr-only">Nom</label> <br/><input type="text" id="inputEmail" class="form-control" placeholder="Nom"  value="<?php echo $_SESSION["nom"] ?> " name="Nom" required autofocus>'
+      +'<label for="inputPrenom" class="sr-only">Prenom</label> <br/><input type="text" id="inputEmail" class="form-control" placeholder="Prenom" value="<?php echo $_SESSION["prenom"]?>" name="Prenom" required autofocus>'
       +'<label for="inputEmail" class="sr-only">Email address</label> <br/><input type="email" id="inputEmail" class="form-control" placeholder="Email address" value="<?php echo $_SESSION["mail"]?>" name="Mail" required autofocus>'
       +'<label for="inputPassword" class="sr-only">Password</label> <br/><input type="password" id="inputPassword" class="form-control" placeholder="Password" value="<?php echo $_SESSION["mdp"]?>"  name="mdp" required autofocus>'
       +'<label for="inputPassword" class="sr-only">Confirmer Password</label> <br/> <input type="password" id="inputPassword" class="form-control" placeholder="Confirmer Password" value="<?php echo $_SESSION["mdp"]?>" name="mdpconfirm" required autofocus>'
+      +'<label for="inputArgent" class="sr-only">Ajout Argent</label><br/> <input type="number" class="form-control"  name="somme" placeholder="Ajout Argent" min="<?php echo $_SESSION["argent"]?>" value="<?php echo $_SESSION["argent"]?>" required/>'
       +'<br/> <button class="btn btn-lg btn-primary btn-block" id="valider" type="submit">Enregistrer Modification</button></form>';
 
 function modification() {

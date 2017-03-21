@@ -2,7 +2,7 @@
 require_once("BD.php");
 session_start();
 $queryRecupUser = 'SELECT * from Utilisateur where adressemail = :mail ;';
-$queryUpdateUser = 'UPDATE Utilisateur Set nom = :name , prenom = :surname , password = :mdp , adressemail=:mail where adressemail = :mailorigin';
+$queryUpdateUser = 'UPDATE Utilisateur Set nom = :name , prenom = :surname , password = :mdp , adressemail=:mail , Argent=:argent where adressemail = :mailorigin';
 
 if(isset($_POST)){
 	global $pdo;
@@ -29,6 +29,7 @@ if(isset($_POST)){
  	$prep->bindValue(':surname', $_POST["Prenom"] , PDO::PARAM_STR);
  	$prep->bindValue(':mdp', $_POST["mdp"] , PDO::PARAM_STR);
  	$prep->bindValue(':mail',$_POST["Mail"] , PDO::PARAM_STR);
+ 	$prep->bindValue(':argent',$_POST["somme"] , PDO::PARAM_STR);
  	$prep->bindValue(':mailorigin',$_SESSION['mail'], PDO::PARAM_STR);
  	$prep->execute();
 
@@ -37,5 +38,6 @@ if(isset($_POST)){
 	$_SESSION['prenom']=$_POST["Prenom"];
 	$_SESSION['mail']=$_POST["Mail"] ;
 	$_SESSION['mdp']=$_POST["mdp"];
+	$_SESSION['argent']=$_POST["somme"];
 	header('Location: ./../profil.php');
 }
