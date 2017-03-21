@@ -26,9 +26,6 @@ function gererActionsUser(){
 	if(isset($_SESSION["actions"])){
 		$donneeUtilisateur=json_encode($_SESSION["actions"]);
 		foreach ($_SESSION["actions"] as $action){
-			var_dump($action);
-			echo 'action: '.$action["nomAction"];
-			echo '<br>';
 			array_push($actionsUser,$action["nomAction"]);
 			$strResult.="'".$action["nomAction"]."',";
 			
