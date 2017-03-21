@@ -155,7 +155,12 @@ if(array_key_exists('achat', $_POST)){
 }
 
 if(array_key_exists('vente', $_POST)){
-    vente(explode(";",$_POST["vente"]),$_POST["nb-vente"],$_SESSION["mail"],$_SESSION["argent"]);
+    if(array_key_exists('nb-vente', $_POST))
+        vente(explode(";",$_POST["vente"]),$_POST["nb-vente"],$_SESSION["mail"],$_SESSION["argent"]);
+    else{
+        $_SESSION["transaction"]="";
+        header('Location: ./../profil.php');
+    }
 }
 
 
