@@ -15,7 +15,7 @@ $InsetActionUser='INSERT INTO Action_Utilisateur (idUser,idAction,nombreAction) 
 function achat($tab,$mail,$argent){
     if($_SESSION["argent"]-$tab[2] < 0 ){
         $_SESSION["transaction"]="Probleme Achat";
-        header('Location: ./bourse.php');
+        header('Location: ./../bourse.php');
         return;
     }
 

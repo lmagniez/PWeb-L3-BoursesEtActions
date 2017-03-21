@@ -1,5 +1,17 @@
 <?php
 require_once("header.php");
+
+function messageEreur(){
+    if(isset($_SESSION['transaction'])){
+        if($_SESSION['transaction'] != "Probleme Achat" ){
+            return "<div class=\"alert alert-success\" style=\"text-align:center;\"><strong>Success!</strong> ". $_SESSION['transaction'] ." </div>";
+        }
+        else{
+            return "<div class=\"alert alert-danger\" style=\"text-align:center;\" ><strong>Danger!</strong> ". $_SESSION['transaction'] ."</div>";
+        }
+    }
+}
+
 ?><img class="baniere" src="./Image/bourse.jpg"  width="100%" height="300px">
 <body  onload="init(); executerRequete(recupAllCSV); executerRequete(getIdsAccueil)">
    <div class="container">
@@ -13,7 +25,7 @@ require_once("header.php");
 
       <div class="tab-content">
           <div id="bourse" class="tab-pane fade in active">
-              <p>Liste de toute la bourse</p>
+            <?php echo messageEreur(); ?>
           </div>
 
 
@@ -23,7 +35,7 @@ require_once("header.php");
           </div>
 
       </div>
-      
+       
         <div id="ids"></div>
         <br/>
         <div id="element"></div>
