@@ -47,6 +47,9 @@ function messageEreur(){
 			<canvas id="chart-ask" width="200" height="200"></canvas>
 		</div>
 
+	
+
+
       
       
    

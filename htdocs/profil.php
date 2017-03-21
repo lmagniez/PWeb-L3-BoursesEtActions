@@ -89,6 +89,15 @@ gererActionsUser();
                     <img class="baniere" src="./Image/avatar.png"  width="100%" height="250px">
                   </div>
                   
+                  <form method="post" id="form-vente" action="">
+					  <select name="nb-vente">
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+					  </select>
+					  <input type="submit" name="submit-vente" value="vendre">
+                  </form>
+                  
                   <button class="btn btn-primary btn-lg btn-block" onClick="modification()" id="valider" type="submit">Modifier</button><br/>
               </div>
           </div>
@@ -108,6 +117,8 @@ gererActionsUser();
       +'<label for="inputPassword" class="sr-only">Confirmer Password</label> <br/> <input type="password" id="inputPassword" class="form-control" placeholder="Confirmer Password" value="<?php echo $_SESSION["mdp"]?>" name="mdpconfirm" required autofocus>'
       +'<label for="inputArgent" class="sr-only">Ajout Argent</label><br/> <input type="number" class="form-control"  name="somme" placeholder="Ajout Argent" min="<?php echo $_SESSION["argent"]?>" value="<?php echo $_SESSION["argent"]?>" required/>'
       +'<br/> <button class="btn btn-lg btn-primary btn-block" id="valider" type="submit">Enregistrer Modification</button></form>';
+
+
 
 function modification() {
   document.getElementById('elementconfig').innerHTML = modif;

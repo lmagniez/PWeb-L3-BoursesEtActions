@@ -537,8 +537,8 @@ function afficherActionPerso(symbole, nbActions ) {
 	
 	var content= document.createElement("div");
 	content.setAttribute("id","elt-content");
-	
-	
+
+	//génération liste d'information
 	var contentUl= document.createElement("ul");
 	var listeName= document.createElement("li");
 	var listeSym= document.createElement("li");
@@ -546,7 +546,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	var listeChange= document.createElement("li");
 	var listeActions= document.createElement("li");
 	
-	
+	//contenu des listes
 	var name = document.createTextNode("Nom: "+elt.name);
 	listeName.appendChild(name);
 	var symbole = document.createTextNode("Symbole: "+elt.symbole);
@@ -556,9 +556,10 @@ function afficherActionPerso(symbole, nbActions ) {
 	var change = document.createTextNode(" Changement"+elt.données[elt.données.length-1].change
 	+" ("+elt.données[elt.données.length-1].changeP+")");
 	listeChange.appendChild(change);
-	var nbActions = document.createTextNode("Nombre d'actions: "+nbActions);
-	listeActions.appendChild(nbActions);
+	var nbActionsT = document.createTextNode("Nombre d'actions: "+nbActions);
+	listeActions.appendChild(nbActionsT);
 	
+	//append liste
 	contentUl.appendChild(listeName);
 	contentUl.appendChild(listeSym);
 	contentUl.appendChild(listeType);
@@ -566,7 +567,43 @@ function afficherActionPerso(symbole, nbActions ) {
 	contentUl.appendChild(listeActions);
 	content.appendChild(contentUl);
 	
-	//creation bouton
+	
+	//création formulaire
+	var form=document.createElement("form");
+	form.setAttribute("method","post");
+	form.setAttribute("id","form-vente");
+///////////////////////////////////////////////////////
+	form.setAttribute("action","");
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+	//select du form
+	var select = document.createElement("select");
+	select.setAttribute("id","nb-vente");
+	select.setAttribute("name","nb-vente");
+	form.appendChild(select);
+	
+	//opt du form
+	for(var i=1; i<=nbActions; i++) {
+		
+		var opt=document.createElement("option");
+		opt.setAttribute("value",i);
+		var txt=document.createTextNode(i);
+		select.appendChild(opt);
+		opt.appendChild(txt);
+		
+	}
+	
+	//submit du form
+	var input = document.createElement("input");
+	input.setAttribute("type","submit");
+	input.setAttribute("name","submit-vente");
+	input.setAttribute("value","Vendre");
+	form.appendChild(input);
+	
+	content.appendChild(form);
 	
 	var buttonAchat = document.createElement("button");
 	buttonAchat.setAttribute("name","achat-action");
