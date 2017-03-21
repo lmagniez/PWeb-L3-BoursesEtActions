@@ -1,6 +1,6 @@
 <?php
-session_start();
-//mapage.php
+require_once("./BD/BDAchatVente.php");
+
 if(isset($_GET['action']))
 {
     if($_GET['action']=="deco"){

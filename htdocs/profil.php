@@ -1,5 +1,6 @@
 <?php
 require_once("header.php");
+
 function messageEreur(){
     if(isset($_SESSION['messageUpdate'])){
         if($_SESSION['messageUpdate'] == "good" ){
@@ -10,8 +11,6 @@ function messageEreur(){
         }
     }
 }
-
-
 ?>
 
 <img class="baniere" src="./Image/profil.jpg"  width="100%" height="300px">
@@ -26,6 +25,8 @@ function messageEreur(){
       <div class="tab-content">
 
           <div id="actions" class="tab-pane fade in active">
+              <pre>
+              <?php var_dump($_SESSION["actions"]);?></pre>
               <h3>HOME</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				<div id="ids"></div>

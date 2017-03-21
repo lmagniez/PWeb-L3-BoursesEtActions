@@ -460,12 +460,31 @@ function afficherActionAccueil(symbole) {
 	buttonAchat.appendChild(textB1);
 	content.appendChild(buttonAchat);
 	
+	
+	var form=document.createElement("form");
+	form.setAttribute("id",elt.name);
+	form.setAttribute("method","post");
+	form.setAttribute("style","display:none;");
+	form.setAttribute("action","./BD/BDAchatVente.php");
+
+	var input=document.createElement("input");
+	input.setAttribute("type","hidden");
+	input.setAttribute("name","achat");
+	input.setAttribute("value",elt.name+";"+elt.symbole+";"+elt.données[elt.données.length-1].ask);
+	
+	form.appendChild(input);
+	content.appendChild(form);
+
+
+	var lien=document.createElement("a");
+	lien.setAttribute("href","#");	
+	lien.setAttribute("onclick","document.getElementById('"+elt.name+"').submit(); return false;");	
 	var buttonAchat = document.createElement("button");
 	buttonAchat.setAttribute("name","achat-action");
-	buttonAchat.setAttribute("value",elt.données[elt.données.length-1].ask);
 	var textB1=document.createTextNode("Acheter");
 	buttonAchat.appendChild(textB1);
-	content.appendChild(buttonAchat);
+	lien.appendChild(buttonAchat);
+	content.appendChild(lien);
 	
 	body.appendChild(content);
 	

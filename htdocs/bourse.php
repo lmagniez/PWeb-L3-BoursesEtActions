@@ -12,7 +12,6 @@ require_once("header.php");
         </ul>
 
       <div class="tab-content">
-
           <div id="bourse" class="tab-pane fade in active">
               <p>Liste de toute la bourse</p>
           </div>

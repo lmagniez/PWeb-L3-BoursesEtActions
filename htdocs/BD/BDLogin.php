@@ -28,5 +28,6 @@ if(isset($_POST)){
 	$_SESSION['argent']=$res[0]["Argent"];
 	$_SESSION['mail']=$res[0]["adressemail"];
 	$_SESSION['mdp']=$res[0]["password"];
+	recupNom($_SESSION['mail']);
 	header('Location: ./../login.php');
 }
