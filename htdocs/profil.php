@@ -1,7 +1,7 @@
 <?php
 require_once("header.php");
 
-function messageEreur(){
+function messageEreurProfil(){
     if(isset($_SESSION['messageUpdate'])){
         if($_SESSION['messageUpdate'] == "good" ){
             return "<div class=\"alert alert-success\" style=\"text-align:center;\"><strong>Success!</strong> Modification prise en compte </div>";
@@ -9,6 +9,12 @@ function messageEreur(){
         else{
             return "<div class=\"alert alert-danger\" style=\"text-align:center;\" ><strong>Danger!</strong> ". $_SESSION['messageUpdate'] ."</div>";
         }
+    }
+}
+
+function messageEreurAction(){
+    if(isset($_SESSION['transaction'])){
+          return "<div class=\"alert alert-success\" style=\"text-align:center;\"><strong>Success!</strong> ".$_SESSION['transaction']." </div>";
     }
 }
 
@@ -59,8 +65,7 @@ gererActionsUser();
       <div class="tab-content">
 
           <div id="actions" class="tab-pane fade in active">
-              <h3>HOME</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <?php echo messageEreurAction(); ?>
 				<div id="ids"></div>
 				<br/>
 				<div id="element"></div>
@@ -77,7 +82,7 @@ gererActionsUser();
 
            <div id="profil" class="tab-pane fade">
               <div id="elementconfig" class="row tabprofildiv">
-                  <?php echo messageEreur(); ?>
+                  <?php echo messageEreurProfil(); ?>
                   <div class="col-xs-12 col-md-7 col-md-offset-1">
                     <h4>Nom: </h4><?php echo $_SESSION["nom"]?> </br>
                     <h4>Prenom: </h4> <?php echo $_SESSION["prenom"]?></br>

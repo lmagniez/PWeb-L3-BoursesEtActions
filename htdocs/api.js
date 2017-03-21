@@ -470,7 +470,7 @@ function afficherActionAccueil(symbole) {
 	
 	
 	var form=document.createElement("form");
-	form.setAttribute("id",elt.name);
+	form.setAttribute("id",elt.name+"_achat");
 	form.setAttribute("method","post");
 	form.setAttribute("style","display:none;");
 	form.setAttribute("action","./BD/BDAchatVente.php");
@@ -486,7 +486,7 @@ function afficherActionAccueil(symbole) {
 
 	var lien=document.createElement("a");
 	lien.setAttribute("href","#");	
-	lien.setAttribute("onclick","document.getElementById('"+elt.name+"').submit(); return false;");	
+	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_achat').submit(); return false;");	
 	var buttonAchat = document.createElement("button");
 	buttonAchat.setAttribute("name","achat-action");
 	var textB1=document.createTextNode("Acheter");
@@ -568,60 +568,83 @@ function afficherActionPerso(symbole, nbActions ) {
 	content.appendChild(contentUl);
 	
 	
-	//création formulaire
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+	
+
+	
+
+	//------------------submit du form Vendre----------------
 	var form=document.createElement("form");
+	form.setAttribute("id",elt.name+"_vente");
 	form.setAttribute("method","post");
-	form.setAttribute("id","form-vente");
-///////////////////////////////////////////////////////
-	form.setAttribute("action","");
+	form.setAttribute("action","./BD/BDAchatVente.php");
 
-///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
-
-	//select du form
+	//balise cache
+	var input=document.createElement("input");
+	input.setAttribute("type","hidden");
+	input.setAttribute("name","vente");
+	input.setAttribute("value",elt.name+";"+elt.symbole+";"+elt.données[elt.données.length-1].ask);
+	
 	var select = document.createElement("select");
 	select.setAttribute("id","nb-vente");
 	select.setAttribute("name","nb-vente");
-	form.appendChild(select);
-	
+
 	//opt du form
 	for(var i=1; i<=nbActions; i++) {
-		
 		var opt=document.createElement("option");
 		opt.setAttribute("value",i);
 		var txt=document.createTextNode(i);
 		select.appendChild(opt);
 		opt.appendChild(txt);
-		
 	}
-	
-	//submit du form
-	var input = document.createElement("input");
-	input.setAttribute("type","submit");
-	input.setAttribute("name","submit-vente");
-	input.setAttribute("value","Vendre");
+
+	form.appendChild(select);
 	form.appendChild(input);
-	
 	content.appendChild(form);
-	
+	body.appendChild(content);
+
+	var lien=document.createElement("a");
+	lien.setAttribute("href","#");	
+	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_vente').submit(); return false;");	
 	var buttonAchat = document.createElement("button");
-	buttonAchat.setAttribute("name","achat-action");
-	buttonAchat.setAttribute("value",elt.données[elt.données.length-1].ask);
-	var textB1=document.createTextNode("Acheter");
+	buttonAchat.setAttribute("name","vente-action");
+	var textB1=document.createTextNode("Vente Vincent");
 	buttonAchat.appendChild(textB1);
-	content.appendChild(buttonAchat);
-	
-	var buttonVente = document.createElement("button");
-	buttonVente.setAttribute("name","vente-action");
-	buttonVente.setAttribute("value",elt.données[elt.données.length-1].bid);
-	var textB2=document.createTextNode("Vendre");
-	buttonVente.appendChild(textB2);
-	content.appendChild(buttonVente);
-	
+	lien.appendChild(buttonAchat);
+	content.appendChild(lien);
 	
 	body.appendChild(content);
+
+	//------------------submit du form ACHAT----------------
+	var form=document.createElement("form");
+	form.setAttribute("id",elt.name+"_achat");
+	form.setAttribute("method","post");
+	form.setAttribute("style","display:none;");
+	form.setAttribute("action","./BD/BDAchatVente.php");
+
+	var input=document.createElement("input");
+	input.setAttribute("type","hidden");
+	input.setAttribute("name","achat");
+	input.setAttribute("value",elt.name+";"+elt.symbole+";"+elt.données[elt.données.length-1].ask);
 	
+	form.appendChild(input);
+	content.appendChild(form);
+
+
+	var lien=document.createElement("a");
+	lien.setAttribute("href","#");	
+	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_achat').submit(); return false;");	
+	var buttonAchat = document.createElement("button");
+	buttonAchat.setAttribute("name","achat-action");
+	var textB1=document.createTextNode("Acheter Vincent");
+	buttonAchat.appendChild(textB1);
+	lien.appendChild(buttonAchat);
+	content.appendChild(lien);
+	
+	body.appendChild(content);
+	//----------------------------------------------
 	
 	graph(elt);
 	

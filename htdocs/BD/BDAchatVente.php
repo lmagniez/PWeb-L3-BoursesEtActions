@@ -96,10 +96,13 @@ function achat($tab,$mail,$argent){
     header('Location: ./../bourse.php');
 }
 
-function vente($tab,$mail,$argent){
+function vente($tab,$nbAction,$mail,$argent){
+    global $pdo;
     global $queryRecupIDAction;
     global $queryRecupID;
     global $VerifSiPossedAction;
+    global $UpdateNbAction;
+    global $UpdateSomme;
 
     //on recup l'id de l'action
     $prep = $pdo->prepare($queryRecupIDAction);
@@ -124,7 +127,7 @@ function vente($tab,$mail,$argent){
     $nomb=$resNOM[0]["nombreAction"];
 
     //on set le nom
-    $nb=1; //----------------------MODIF ICI POUR LE SELECT -------------------------
+    $nb=$nbAction; 
 
     //on update le nombre d'action y pour le User x
     $prep = $pdo->prepare($UpdateNbAction);
@@ -142,7 +145,7 @@ function vente($tab,$mail,$argent){
     $res=$prep->fetchAll();
 
     $_SESSION["argent"]=$_SESSION["argent"]+($nb*$tab[2]);
-    $_SESSION["transaction"]="Vente Reussis pour l'action ".$tab[0];
+    $_SESSION["transaction"]="Vente Reussis pour l'action ".$tab[0]." au nombre de ".$nbAction;
     recupNom($_SESSION["mail"]);
     header('Location: ./../profil.php');
 }
@@ -152,7 +155,7 @@ if(array_key_exists('achat', $_POST)){
 }
 
 if(array_key_exists('vente', $_POST)){
-    vente(explode(";",$_POST["vente"]),$_SESSION["mail"],$_SESSION["argent"]);
+    vente(explode(";",$_POST["vente"]),$_POST["nb-vente"],$_SESSION["mail"],$_SESSION["argent"]);
 }
 
 
