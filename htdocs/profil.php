@@ -11,10 +11,47 @@ function messageEreur(){
         }
     }
 }
+
+$actionsUser=array();
+$strResult;
+$donneeUtilisateur;
+
+function gererActionsUser(){
+	global $strResult;
+	global $actionsUser;
+	global $donneeUtilisateur;
+	
+	$strResult="[";
+	
+	if(isset($_SESSION["actions"])){
+		$donneeUtilisateur=json_encode($_SESSION["actions"]);
+		foreach ($_SESSION["actions"] as $action){
+			var_dump($action);
+			echo 'action: '.$action["nomAction"];
+			echo '<br>';
+			array_push($actionsUser,$action["nomAction"]);
+			$strResult.="'".$action["nomAction"]."',";
+			
+		}
+		//commandes
+		
+		var_dump($actionsUser);
+		
+	}
+	$strResult=substr($strResult, 0, -1);
+	$strResult.="]";
+
+
+	$donneeUtilisateur=str_replace("\"","'",$donneeUtilisateur);
+}
+
+gererActionsUser();
+
+
 ?>
 
 <img class="baniere" src="./Image/profil.jpg"  width="100%" height="300px">
-<body onload="init(); executerRequete(recupAllCSV); executerRequete(getIdsPerso(['FB','GC=F']))" >
+<body onload="init(); executerRequete(recupAllCSV); executerRequete(getIdsPerso(<?php echo $strResult.',';echo $donneeUtilisateur; ?>))" >
    <div class="container">
         <h1 style="text-align:center;">Mon Compte</h1>
         <ul class="nav nav-tabs">
@@ -25,8 +62,6 @@ function messageEreur(){
       <div class="tab-content">
 
           <div id="actions" class="tab-pane fade in active">
-              <pre>
-              <?php var_dump($_SESSION["actions"]);?></pre>
               <h3>HOME</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				<div id="ids"></div>

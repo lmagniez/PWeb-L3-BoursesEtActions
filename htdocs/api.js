@@ -299,7 +299,9 @@ function getIdsAccueil(){
 //créé un select comportant les différents nom des actions
 //créé dans <div id=ids></div>
 //{'FB','GC=F'}
-function getIdsPerso(tab){
+function getIdsPerso(tabActions, tabNbActions){
+	
+	console.log(tabNbActions);
 	
 	var body = document.getElementById("ids");
 	
@@ -319,9 +321,9 @@ function getIdsPerso(tab){
 	body.appendChild(select);
 	
 	//option
-	for(var i=0; i<tab.length; i++) {
+	for(var i=0; i<tabActions.length; i++) {
 		
-		var elt=getEltBySymbole(tab[i]);
+		var elt=getEltBySymbole(tabActions[i]);
 		var opt=document.createElement("option");
 		opt.setAttribute("value",elt.symbole);
 		var txt=document.createTextNode(elt.name);
@@ -337,7 +339,7 @@ function getIdsPerso(tab){
 	
 	
 	
-	btn.addEventListener("click", function(){afficherActionPersoFromSelect()});
+	btn.addEventListener("click", function(){afficherActionPersoFromSelect(tabNbActions)});
 	var txt= document.createTextNode("Afficher");
 	btn.appendChild(txt);
 	
@@ -398,9 +400,15 @@ function afficherActionAccueilFromSelect(){
 	afficherActionAccueil(value);
 }
 
-function afficherActionPersoFromSelect(){
+function afficherActionPersoFromSelect(tabNbActions){
 	var value = document.getElementById("select-id").value;
-	afficherActionPerso(value);
+	var nbActions;
+	for(var i=0; i<tabNbActions.length; i++){
+		if(tabNbActions[i].nomAction==value)
+			nbActions=tabNbActions[i].nombreAction;
+	}
+	
+	afficherActionPerso(value, nbActions);
 }
 
 function afficherActionAccueil(symbole) {
@@ -494,8 +502,9 @@ function afficherActionAccueil(symbole) {
 }
 
 
-function afficherActionPerso(symbole) {
+function afficherActionPerso(symbole, nbActions ) {
 
+	console.log("nb Actions!!!!! "+nbActions);
 	
 	executerRequete(recupCSV1());
 	
@@ -535,6 +544,8 @@ function afficherActionPerso(symbole) {
 	var listeSym= document.createElement("li");
 	var listeType= document.createElement("li");
 	var listeChange= document.createElement("li");
+	var listeActions= document.createElement("li");
+	
 	
 	var name = document.createTextNode("Nom: "+elt.name);
 	listeName.appendChild(name);
@@ -545,11 +556,14 @@ function afficherActionPerso(symbole) {
 	var change = document.createTextNode(" Changement"+elt.données[elt.données.length-1].change
 	+" ("+elt.données[elt.données.length-1].changeP+")");
 	listeChange.appendChild(change);
+	var nbActions = document.createTextNode("Nombre d'actions: "+nbActions);
+	listeActions.appendChild(nbActions);
 	
 	contentUl.appendChild(listeName);
 	contentUl.appendChild(listeSym);
 	contentUl.appendChild(listeType);
 	contentUl.appendChild(listeChange);
+	contentUl.appendChild(listeActions);
 	content.appendChild(contentUl);
 	
 	//creation bouton
