@@ -27,7 +27,7 @@ function messageEreur(){
 	<body background="./Image/fond.jpg">
 	 <div class="container">
 
-      <form class="form-signin" method="post" action="./BD/BDinscription.php" style="border-radius: 20px;">
+      <form class="form-signin" method="post" action="./BD/.BDinscription.php" style="border-radius: 20px;">
         <h2 class="form-signin-heading" style="text-align: center;">Enregistrer</h2>
         <label for="inputEmail" class="sr-only">Nom</label> <br/>
         	<input type="text" id="inputEmail" class="form-control" placeholder="Nom" name="Nom" required autofocus>

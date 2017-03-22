@@ -1,5 +1,5 @@
 <?php
-require_once("BD.php");
+require_once(".BD.php");
 session_start();
 
 $UpdateSomme='UPDATE Utilisateur SET Argent = :newArgent where idUser = :idU';

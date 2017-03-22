@@ -1,6 +1,6 @@
 <?php
 
-$dsn = "sqlite:BDD.sqlite3" ;
+$dsn = "sqlite:.ht_BDD.sqlite3" ;
 $pdo = new PDO($dsn);
 if(!$pdo) echo 'Erreur connection bdd';
 

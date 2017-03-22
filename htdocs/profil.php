@@ -114,7 +114,7 @@ gererActionsUser();
   </body>
   <footer>
       <script>
-        var modif='<form class="form-signin" method="post" action="./BD/BDupdate.php" style="border-radius: 20px;">'
+        var modif='<form class="form-signin" method="post" action="./BD/.BDupdate.php" style="border-radius: 20px;">'
       +'<label for="inputNom" class="sr-only">Nom</label> <br/><input type="text" id="inputEmail" class="form-control" placeholder="Nom"  value="<?php echo $_SESSION["nom"] ?> " name="Nom" required autofocus>'
       +'<label for="inputPrenom" class="sr-only">Prenom</label> <br/><input type="text" id="inputEmail" class="form-control" placeholder="Prenom" value="<?php echo $_SESSION["prenom"]?>" name="Prenom" required autofocus>'
       +'<label for="inputEmail" class="sr-only">Email address</label> <br/><input type="email" id="inputEmail" class="form-control" placeholder="Email address" value="<?php echo $_SESSION["mail"]?>" name="Mail" required autofocus>'

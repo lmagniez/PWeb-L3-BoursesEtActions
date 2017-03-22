@@ -1,5 +1,5 @@
 <?php
-require_once("BD.php");
+require_once(".BD.php");
 session_start();
 $queryRecupUser = 'SELECT * from Utilisateur where adressemail = :mail ;';
 $queryUpdateUser = 'UPDATE Utilisateur Set nom = :name , prenom = :surname , password = :mdp , adressemail=:mail , Argent=:argent where adressemail = :mailorigin';

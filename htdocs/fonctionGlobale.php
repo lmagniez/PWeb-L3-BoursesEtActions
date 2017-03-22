@@ -1,5 +1,5 @@
 <?php
-require_once("./BD/BDAchatVente.php");
+require_once("./BD/.BDAchatVente.php");
 
 if(isset($_GET['action']))
 {

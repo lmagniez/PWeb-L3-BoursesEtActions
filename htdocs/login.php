@@ -27,7 +27,7 @@ function messageEreur(){
 
 	<body background="./Image/fond.jpg">
 	 <div class="container">
-      <form class="form-signin" method="post" action="./BD/BDLogin.php" style="border-radius: 20px;">
+      <form class="form-signin" method="post" action="./BD/.BDLogin.php" style="border-radius: 20px;">
         <h2 class="form-signin-heading" style="text-align: center;">Connection</h2>
         <label for="inputEmail" class="sr-only">Email address</label> <br/>
         	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="Mail" required autofocus>
@@ -37,7 +37,7 @@ function messageEreur(){
 
         <button class="btn btn-lg btn-primary btn-block" id="valider" type="submit">Sign in</button><br/>
         <?php echo messageEreur(); ?>
-        <a class="lien" href="./register.php">Enregistrez vous</a>
+        <a class="lien" href="./.register.php">Enregistrez vous</a>
       </form>
     </div> <!-- /container -->
 	</body>

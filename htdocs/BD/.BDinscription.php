@@ -1,5 +1,5 @@
 <?php
-require_once("BD.php");
+require_once(".BD.php");
 session_start();
 
 $queryVerifieMail = 'SELECT * from Utilisateur where adressemail = :mail ;';
