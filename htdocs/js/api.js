@@ -473,7 +473,7 @@ function afficherActionAccueil(symbole) {
 	form.setAttribute("id",elt.name+"_achat");
 	form.setAttribute("method","post");
 	form.setAttribute("style","display:none;");
-	form.setAttribute("action","./BD/BDAchatVente.php");
+	form.setAttribute("action","./BD/.BDAchatVente.php");
 
 	var input=document.createElement("input");
 	input.setAttribute("type","hidden");
@@ -579,7 +579,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	var form=document.createElement("form");
 	form.setAttribute("id",elt.name+"_vente");
 	form.setAttribute("method","post");
-	form.setAttribute("action","./BD/BDAchatVente.php");
+	form.setAttribute("action","./BD/.BDAchatVente.php");
 
 	//balise cache
 	var input=document.createElement("input");
@@ -622,7 +622,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	form.setAttribute("id",elt.name+"_achat");
 	form.setAttribute("method","post");
 	form.setAttribute("style","display:none;");
-	form.setAttribute("action","./BD/BDAchatVente.php");
+	form.setAttribute("action","./BD/.BDAchatVente.php");
 
 	var input=document.createElement("input");
 	input.setAttribute("type","hidden");

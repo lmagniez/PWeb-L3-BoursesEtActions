@@ -18,6 +18,7 @@
 		$ch = curl_init();
 		//curl_setopt($ch, CURLOPT_URL, "http://finance.yahoo.com/d/quotes.csv?s=GOOGL,AAPL,MSFT,FB,GC=F&f=abo");
 		curl_setopt($ch, CURLOPT_URL, "http://finance.yahoo.com/d/quotes.csv?s=".$symbole."&f=abc1p2d1t1");
+		curl_setopt($ch,CURLOPT_PROXY,"cache-etu.univ-artois.fr:3128");
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch,CURLOPT_FOLLOWLOCATION,true);
 		$csvData = curl_exec($ch);

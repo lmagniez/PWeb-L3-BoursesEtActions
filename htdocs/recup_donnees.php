@@ -16,6 +16,7 @@
 		curl_setopt($ch, CURLOPT_URL, "http://finance.yahoo.com/d/quotes.csv?s=".$symboles."&f=abo");
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch,CURLOPT_FOLLOWLOCATION,true);
+		curl_setopt($ch,CURLOPT_PROXY,"cache-etu.univ-artois.fr:3128");
 		$csvData = curl_exec($ch);
 		//$parsed_json = json_decode($parsed_json);
 		
