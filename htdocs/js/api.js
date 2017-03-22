@@ -217,6 +217,7 @@ function suppressionAffichage(){
 	var del= document.getElementById("select-id");
 	if(del!=null)
 		body.removeChild(del);
+
 	del=document.getElementById("button-id");
 	if(del!=null)
 		body.removeChild(del);
@@ -610,7 +611,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_vente').submit(); return false;");
 	var buttonAchat = document.createElement("button");
 	buttonAchat.setAttribute("name","vente-action");
-	var textB1=document.createTextNode("Vente Vincent");
+	var textB1=document.createTextNode("Vente");
 	buttonAchat.appendChild(textB1);
 	lien.appendChild(buttonAchat);
 	content.appendChild(lien);
@@ -638,7 +639,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_achat').submit(); return false;");
 	var buttonAchat = document.createElement("button");
 	buttonAchat.setAttribute("name","achat-action");
-	var textB1=document.createTextNode("Acheter Vincent");
+	var textB1=document.createTextNode("Acheter");
 	buttonAchat.appendChild(textB1);
 	lien.appendChild(buttonAchat);
 	content.appendChild(lien);

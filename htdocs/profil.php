@@ -63,7 +63,6 @@ gererActionsUser();
         </ul>
 
       <div class="tab-content">
-	<pre><?php var_dump($_SESSION["actions"]);?></pre>
           <div id="actions" class="tab-pane fade in active">
 
               <?php echo messageEreurAction(); ?>
@@ -96,14 +95,6 @@ gererActionsUser();
                     <img class="baniere" src="./Image/avatar.png"  width="100%" height="250px">
                   </div>
 
-                  <form method="post" id="form-vente" action="">
-					  <select name="nb-vente">
-						  <option value="1">1</option>
-						  <option value="2">2</option>
-						  <option value="3">3</option>
-					  </select>
-					  <input type="submit" name="submit-vente" value="vendre">
-                  </form>
 
                   <button class="btn btn-primary btn-lg btn-block" onClick="modification()" id="valider" type="submit">Modifier</button><br/>
               </div>
