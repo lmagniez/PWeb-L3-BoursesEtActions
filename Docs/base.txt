@@ -1,0 +1,27 @@
+@startuml
+
+Action -- Action_Utilisateur
+Utilisateur -- Action_Utilisateur
+
+class Utilisateur {
+ -idUser: INTEGER PRIMARY KEY
+ -nom: VARCHAR
+ -prenom: VARCHAR
+ -password: VARCHAR
+ -adressemail: VARCHAR
+ -Argent: DECIMAL
+}
+
+class Action {
+ -idAction: INTEGER PRIMARY KEY
+ -nomAction: VARCHAR
+}
+
+class Action_Utilisateur {
+ - idUser: INTEGER FOREIGN KEY REFERENCES Utilisateur
+ - idAction: INTEGER FOREIGN KEY REFERENCES Action
+ - nombreAction: INTEGER 
+}
+
+
+@enduml
