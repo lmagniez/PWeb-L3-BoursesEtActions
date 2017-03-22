@@ -1,6 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['messageConnection'])){
+	var_dump($_SESSION['messageConnection'] );
     if($_SESSION['messageConnection'] == "good"){
             header('Location: ./accueil.php');
             exit();
@@ -37,7 +38,7 @@ function messageEreur(){
 
         <button class="btn btn-lg btn-primary btn-block" id="valider" type="submit">Sign in</button><br/>
         <?php echo messageEreur(); ?>
-        <a class="lien" href="./.register.php">Enregistrez vous</a>
+        <a class="lien" href="./register.php">Enregistrez vous</a>
       </form>
     </div> <!-- /container -->
 	</body>
