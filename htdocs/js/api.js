@@ -574,7 +574,17 @@ function afficherActionPerso(symbole, nbActions ) {
 ///////////////////////////////////////////////////////
 
 
-
+	var tab=document.createElement("table");
+	var ligne=document.createElement("tr");
+	var cell1=document.createElement("td");
+	var cell2=document.createElement("td");
+	var cell3=document.createElement("td");
+	content.appendChild(tab);
+	tab.appendChild(ligne);
+	ligne.appendChild(cell1);
+	ligne.appendChild(cell2);
+	ligne.appendChild(cell3);
+	
 
 	//------------------submit du form Vendre----------------
 	var form=document.createElement("form");
@@ -603,7 +613,8 @@ function afficherActionPerso(symbole, nbActions ) {
 
 	form.appendChild(select);
 	form.appendChild(input);
-	content.appendChild(form);
+	cell1.appendChild(form);
+	
 	body.appendChild(content);
 
 	var lien=document.createElement("a");
@@ -614,7 +625,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	var textB1=document.createTextNode("Vente");
 	buttonAchat.appendChild(textB1);
 	lien.appendChild(buttonAchat);
-	content.appendChild(lien);
+	cell2.appendChild(lien);
 
 	body.appendChild(content);
 
@@ -642,7 +653,8 @@ function afficherActionPerso(symbole, nbActions ) {
 	var textB1=document.createTextNode("Acheter");
 	buttonAchat.appendChild(textB1);
 	lien.appendChild(buttonAchat);
-	content.appendChild(lien);
+	
+	cell3.appendChild(lien);
 
 	body.appendChild(content);
 	//----------------------------------------------
