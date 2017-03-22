@@ -26,20 +26,20 @@ function gererActionsUser(){
 	global $strResult;
 	global $actionsUser;
 	global $donneeUtilisateur;
-	
+
 	$strResult="[";
-	
+
 	if(isset($_SESSION["actions"])){
 		$donneeUtilisateur=json_encode($_SESSION["actions"]);
 		foreach ($_SESSION["actions"] as $action){
 			array_push($actionsUser,$action["nomAction"]);
 			$strResult.="'".$action["nomAction"]."',";
-			
+
 		}
 		//commandes
-		
+
 		var_dump($actionsUser);
-		
+
 	}
 	$strResult=substr($strResult, 0, -1);
 	$strResult.="]";
@@ -72,11 +72,12 @@ gererActionsUser();
 				<div id="buttons"></div>
 				<br/>
 				<br/>
-				<div id="chart">
-					<canvas id="chart-bid" width="100" height="100"></canvas>
-					<canvas id="chart-ask" width="100" height="100"></canvas>
+				<div id="chart" style="width:600px; height:350px;">
+					<canvas id="chart-bid"></canvas>
+					<canvas id="chart-ask"></canvas>
 				</div>
-          
+
+
           </div>
 
 
@@ -89,11 +90,11 @@ gererActionsUser();
                     <h4>Argent: </h4> <?php echo $_SESSION["argent"]?></br>
                     <h4>Adresse Mail</h4> <?php echo $_SESSION["mail"]?> </br>
                   </div>
-                  
+
                   <div class="col-xs-12 col-md-4 tabprofildiv">
                     <img class="baniere" src="./Image/avatar.png"  width="100%" height="250px">
                   </div>
-                  
+
                   <form method="post" id="form-vente" action="">
 					  <select name="nb-vente">
 						  <option value="1">1</option>
@@ -102,15 +103,15 @@ gererActionsUser();
 					  </select>
 					  <input type="submit" name="submit-vente" value="vendre">
                   </form>
-                  
+
                   <button class="btn btn-primary btn-lg btn-block" onClick="modification()" id="valider" type="submit">Modifier</button><br/>
               </div>
           </div>
 
       </div>
-   
+
     </div> <!-- /container -->
-  
+
   </body>
   <footer>
       <script>

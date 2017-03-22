@@ -14,7 +14,7 @@ function init(){
 	xhr.open("GET", "test.json", true);
 	//xhr.open("GET", "french.json", true);
 	xhr.send();
-    
+
 }
 
 function executerRequete(callback) {
@@ -37,7 +37,7 @@ function executerRequete(callback) {
 }
 
 function getEltBySymbole(symbole){
-	
+
 	//console.log(catalogue);
 	//console.log(symbole);
 	for(var i=0; i<catalogue.length; i++){
@@ -62,7 +62,7 @@ function addDonneeToCatalogue(symbole, a, b, c, cP, d, t, reald, realt) {
 	if(cP=="N/A"){
 		c="0";
 	}
-	
+
 	var donnee= {
 		ask:a,
 		bid:b,
@@ -72,13 +72,13 @@ function addDonneeToCatalogue(symbole, a, b, c, cP, d, t, reald, realt) {
 		time: t,
 		realDate: reald,
 		realTime: realt
-		
+
 	};
-	
-	
+
+
 	for(var i=0; i<catalogue.length; i++){
 		if(catalogue[i].symbole==symbole){
-			
+
 			while(catalogue[i].données.length>15){
 				catalogue[i].données.splice(0,1);
 			}
@@ -86,7 +86,7 @@ function addDonneeToCatalogue(symbole, a, b, c, cP, d, t, reald, realt) {
 		}
 	}
 	loadXMLDoc();
-	
+
 }
 
 /*
@@ -96,7 +96,7 @@ function addDonneeToCatalogue(symbole, a, b, c, cP, d, t, reald, realt) {
 function checkValueExists(symbole, value){
 
 	var elt= getEltBySymbole(symbole);
-	
+
 	if(value[0]=="N/A"){
 		value[0]="0";
 	}
@@ -109,7 +109,7 @@ function checkValueExists(symbole, value){
 	if(value[3]=="N/A"){
 		value[3]="0";
 	}
-	
+
 	var res=false;
 	for(var i=0; i<elt.données.length; i++){
 		res=res||(elt.données[i].ask==value[0]&&elt.données[i].bid==value[1]&&
@@ -121,11 +121,11 @@ function checkValueExists(symbole, value){
 }
 
 function recupAllCSV(){
-	
-	for(var i=0; i<catalogue.length; i++){	
+
+	for(var i=0; i<catalogue.length; i++){
 		recupCSV(catalogue[i].symbole);
 	}
-	
+
 }
 
 
@@ -138,10 +138,10 @@ function recupCSV1(){
  * Récupère dans l'api les données associées au symbole et l'ajoute au tableau json
  */
 function recupCSV(symbole) {
-	
-	
+
+
 	var tmp = JSON.stringify(catalogue);
-	   
+
 	  // tmp value: [{"id":21,"children":[{"id":196},{"id":195},{"id":49},{"id":194}]},{"id":29,"children":[{"id":184},{"id":152}]},...]
 	  $.ajax({
 		type: 'POST',
@@ -151,28 +151,28 @@ function recupCSV(symbole) {
 		  var value= JSON.parse(msg);
 		  value[6]=moment().format('DD/MM');
 		  value[7]=moment().format('HH:mm');
-		  
+
 		  if(!checkValueExists(symbole, value)){
 			addDonneeToCatalogue(symbole, value[0], value[1], value[2], value[3], value[4], value[5], value[6], value[7]);
 			loadXMLDoc();
 		  }
-		  
+
 		},
-    
+
 		error : function(resultat, statut, erreur){
 			console.log("error");
 			console.log(resultat);
 			console.log(statut);
 			console.log(erreur);
-		
+
 		},
 
 		complete : function(resultat, statut){
 
 		}
 	  });
-		
-	
+
+
 }
 
 
@@ -180,10 +180,10 @@ function recupCSV(symbole) {
  * Sauvegarde le catalogue dans un fichier
  */
 function loadXMLDoc() {
-	
-	
+
+
 	var tmp = JSON.stringify(catalogue);
-	   
+
 	  // tmp value: [{"id":21,"children":[{"id":196},{"id":195},{"id":49},{"id":194}]},{"id":29,"children":[{"id":184},{"id":152}]},...]
 	  $.ajax({
 		type: 'POST',
@@ -192,13 +192,13 @@ function loadXMLDoc() {
 		success: function(msg) {
 		  //alert(msg);
 		},
-    
+
 		error : function(resultat, statut, erreur){
 			console.log("error");
 			console.log(resultat);
 			console.log(statut);
 			console.log(erreur);
-		
+
 		},
 
 		complete : function(resultat, statut){
@@ -206,13 +206,13 @@ function loadXMLDoc() {
 
 		}
 	  });
-	
-	
+
+
 }
 
 function suppressionAffichage(){
 	var body = document.getElementById("ids");
-	
+
 	//suppression ancienne valeur
 	var del= document.getElementById("select-id");
 	if(del!=null)
@@ -223,25 +223,25 @@ function suppressionAffichage(){
 	del=document.getElementById("button-id");
 	if(del!=null)
 		body.removeChild(del);
-	
+
 	var body3 = document.getElementById("element");
-	
+
 	//supprime l'ancien affichage
 	var del=document.getElementById("elt-content");
 	if(del!=null){
 		body3.removeChild(del);
 	}
-	
+
 	var body4 = document.getElementById("valider-button");
-	
+
 	//supprime l'ancien affichage
 	var del=document.getElementById("ajout-favoris");
 	if(del!=null){
 		body4.removeChild(del);
 	}
-	
+
 	var body5 = document.getElementById("chart");
-	
+
 	//suppression ancienne valeur
 	var del= document.getElementById("chart-bid");
 	if(del!=null)
@@ -249,24 +249,24 @@ function suppressionAffichage(){
 	del= document.getElementById("chart-ask");
 	if(del!=null)
 		body5.removeChild(del);
-		
+
 
 }
 
 //créé un select comportant les différents nom des actions
 //créé dans <div id=ids></div>
 function getIdsAccueil(){
-	
+
 	var body = document.getElementById("ids");
 	suppressionAffichage();
-	
-	
+
+
 	//creation select
 	var select = document.createElement("select");
 	select.setAttribute("id","select-id");
 	select.setAttribute("name","select-name");
 	body.appendChild(select);
-	
+
 	//option
 	for(var i=0; i<catalogue.length; i++) {
 		var opt=document.createElement("option");
@@ -274,37 +274,37 @@ function getIdsAccueil(){
 		var txt=document.createTextNode(catalogue[i].name);
 		select.appendChild(opt);
 		opt.appendChild(txt);
-		
+
 	}
-	
-	
+
+
 	var btn= document.createElement("button");
 	btn.setAttribute("id","button-id");
 	//btn.addEventListener("click", afficherAction(document.getElementById("select-id").value));
-	
-	
-	
+
+
+
 	btn.addEventListener("click", function(){afficherActionAccueilFromSelect()});
 	var txt= document.createTextNode("Afficher");
 	btn.appendChild(txt);
-	
-	
+
+
 
 	body.appendChild(btn);
-	
-	
-	
+
+
+
 }
 
 //créé un select comportant les différents nom des actions
 //créé dans <div id=ids></div>
 //{'FB','GC=F'}
 function getIdsPerso(tabActions, tabNbActions){
-	
+
 	console.log(tabNbActions);
-	
+
 	var body = document.getElementById("ids");
-	
+
 	//suppression ancienne valeur
 	var del= document.getElementById("select-id");
 	if(del!=null)
@@ -312,43 +312,43 @@ function getIdsPerso(tabActions, tabNbActions){
 	del=document.getElementById("button-id");
 	if(del!=null)
 		body.removeChild(del);
-	
-	
+
+
 	//creation select
 	var select = document.createElement("select");
 	select.setAttribute("id","select-id");
 	select.setAttribute("name","select-name");
 	body.appendChild(select);
-	
+
 	//option
 	for(var i=0; i<tabActions.length; i++) {
-		
+
 		var elt=getEltBySymbole(tabActions[i]);
 		var opt=document.createElement("option");
 		opt.setAttribute("value",elt.symbole);
 		var txt=document.createTextNode(elt.name);
 		select.appendChild(opt);
 		opt.appendChild(txt);
-		
+
 	}
-	
-	
+
+
 	var btn= document.createElement("button");
 	btn.setAttribute("id","button-id");
 	//btn.addEventListener("click", afficherAction(document.getElementById("select-id").value));
-	
-	
-	
+
+
+
 	btn.addEventListener("click", function(){afficherActionPersoFromSelect(tabNbActions)});
 	var txt= document.createTextNode("Afficher");
 	btn.appendChild(txt);
-	
-	
+
+
 
 	body.appendChild(btn);
-	
-	
-	
+
+
+
 }
 
 
@@ -356,18 +356,18 @@ function getIdsPerso(tabActions, tabNbActions){
 //créé dans <div id=ids></div>
 //{'FB','GC=F'}
 function getIdsMarches(){
-	
+
 	var body = document.getElementById("ids");
-	
+
 	suppressionAffichage();
-	
-	
+
+
 	//creation select
 	var select = document.createElement("select");
 	select.setAttribute("id","select-id");
 	select.setAttribute("name","select-name");
 	body.appendChild(select);
-	
+
 	//option
 	for(var i=0; i<catalogue.length; i++) {
 		if(catalogue[i].type=="Marché"){
@@ -377,21 +377,21 @@ function getIdsMarches(){
 			var txt=document.createTextNode(elt.name);
 			select.appendChild(opt);
 			opt.appendChild(txt);
-		}	
+		}
 	}
-	
+
 	var btn= document.createElement("button");
 	btn.setAttribute("id","button-id");
 	//btn.addEventListener("click", afficherAction(document.getElementById("select-id").value));
-	
+
 	btn.addEventListener("click", function(){afficherActionAccueilFromSelect()});
 	var txt= document.createTextNode("Afficher");
 	btn.appendChild(txt);
 
 	body.appendChild(btn);
-	
-	
-	
+
+
+
 }
 
 
@@ -407,42 +407,42 @@ function afficherActionPersoFromSelect(tabNbActions){
 		if(tabNbActions[i].nomAction==value)
 			nbActions=tabNbActions[i].nombreAction;
 	}
-	
+
 	afficherActionPerso(value, nbActions);
 }
 
 function afficherActionAccueil(symbole) {
-	
+
 	executerRequete(recupCSV1());
-	
+
 	//recupère l'action
 	var elt=getEltBySymbole(symbole);
-	
+
 	var body = document.getElementById("element");
-	
+
 	//supprime l'ancien affichage
 	var del=document.getElementById("elt-content");
 	if(del!=null){
 		body.removeChild(del);
 	}
-	
+
 	var body2 = document.getElementById("valider-button");
-	
+
 	//supprime l'ancien affichage
 	var del=document.getElementById("ajout-favoris");
 	if(del!=null){
 		body2.removeChild(del);
 	}
-	
+
 	var content= document.createElement("div");
 	content.setAttribute("id","elt-content");
-	
+
 	var contentUl= document.createElement("ul");
 	var listeName= document.createElement("li");
 	var listeSym= document.createElement("li");
 	var listeType= document.createElement("li");
 	var listeChange= document.createElement("li");
-	
+
 	var name = document.createTextNode("Nom: "+elt.name);
 	listeName.appendChild(name);
 	var symbole = document.createTextNode("Symbole: "+elt.symbole);
@@ -452,23 +452,23 @@ function afficherActionAccueil(symbole) {
 	var change = document.createTextNode(" Changement"+elt.données[elt.données.length-1].change
 	+" ("+elt.données[elt.données.length-1].changeP+")");
 	listeChange.appendChild(change);
-	
+
 	contentUl.appendChild(listeName);
 	contentUl.appendChild(listeSym);
 	contentUl.appendChild(listeType);
 	contentUl.appendChild(listeChange);
 	content.appendChild(contentUl);
-	
+
 	//creation bouton
-	
+
 	var buttonAchat = document.createElement("button");
 	buttonAchat.setAttribute("name","ajout-favoris");
 	buttonAchat.setAttribute("value",elt.symbole);
 	var textB1=document.createTextNode("Ajouter aux favoris");
 	buttonAchat.appendChild(textB1);
 	content.appendChild(buttonAchat);
-	
-	
+
+
 	var form=document.createElement("form");
 	form.setAttribute("id",elt.name+"_achat");
 	form.setAttribute("method","post");
@@ -479,24 +479,24 @@ function afficherActionAccueil(symbole) {
 	input.setAttribute("type","hidden");
 	input.setAttribute("name","achat");
 	input.setAttribute("value",elt.name+";"+elt.symbole+";"+elt.données[elt.données.length-1].ask);
-	
+
 	form.appendChild(input);
 	content.appendChild(form);
 
 
 	var lien=document.createElement("a");
-	lien.setAttribute("href","#");	
-	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_achat').submit(); return false;");	
+	lien.setAttribute("href","#");
+	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_achat').submit(); return false;");
 	var buttonAchat = document.createElement("button");
 	buttonAchat.setAttribute("name","achat-action");
 	var textB1=document.createTextNode("Acheter");
 	buttonAchat.appendChild(textB1);
 	lien.appendChild(buttonAchat);
 	content.appendChild(lien);
-	
+
 	body.appendChild(content);
-	
-	
+
+
 	graph(elt);
 
 }
@@ -505,23 +505,23 @@ function afficherActionAccueil(symbole) {
 function afficherActionPerso(symbole, nbActions ) {
 
 	console.log("nb Actions!!!!! "+nbActions);
-	
+
 	executerRequete(recupCSV1());
-	
+
 
 	//recupère l'action
 	var elt=getEltBySymbole(symbole);
-	
+
 	var body = document.getElementById("element");
-	
+
 	//supprime l'ancien affichage
 	var del=document.getElementById("elt-content");
 	if(del!=null){
 		body.removeChild(del);
 	}
-	
+
 	var body2 = document.getElementById("valider-button");
-	
+
 	//supprime l'ancien affichage
 	var del=document.getElementById("achat-action");
 	if(del!=null){
@@ -531,10 +531,10 @@ function afficherActionPerso(symbole, nbActions ) {
 	if(del!=null){
 		body2.removeChild(del);
 	}
-	
-	
-	
-	
+
+
+
+
 	var content= document.createElement("div");
 	content.setAttribute("id","elt-content");
 
@@ -545,7 +545,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	var listeType= document.createElement("li");
 	var listeChange= document.createElement("li");
 	var listeActions= document.createElement("li");
-	
+
 	//contenu des listes
 	var name = document.createTextNode("Nom: "+elt.name);
 	listeName.appendChild(name);
@@ -558,7 +558,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	listeChange.appendChild(change);
 	var nbActionsT = document.createTextNode("Nombre d'actions: "+nbActions);
 	listeActions.appendChild(nbActionsT);
-	
+
 	//append liste
 	contentUl.appendChild(listeName);
 	contentUl.appendChild(listeSym);
@@ -566,14 +566,14 @@ function afficherActionPerso(symbole, nbActions ) {
 	contentUl.appendChild(listeChange);
 	contentUl.appendChild(listeActions);
 	content.appendChild(contentUl);
-	
-	
-///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
-	
 
-	
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+
+
 
 	//------------------submit du form Vendre----------------
 	var form=document.createElement("form");
@@ -586,7 +586,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	input.setAttribute("type","hidden");
 	input.setAttribute("name","vente");
 	input.setAttribute("value",elt.name+";"+elt.symbole+";"+elt.données[elt.données.length-1].ask);
-	
+
 	var select = document.createElement("select");
 	select.setAttribute("id","nb-vente");
 	select.setAttribute("name","nb-vente");
@@ -606,15 +606,15 @@ function afficherActionPerso(symbole, nbActions ) {
 	body.appendChild(content);
 
 	var lien=document.createElement("a");
-	lien.setAttribute("href","#");	
-	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_vente').submit(); return false;");	
+	lien.setAttribute("href","#");
+	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_vente').submit(); return false;");
 	var buttonAchat = document.createElement("button");
 	buttonAchat.setAttribute("name","vente-action");
 	var textB1=document.createTextNode("Vente Vincent");
 	buttonAchat.appendChild(textB1);
 	lien.appendChild(buttonAchat);
 	content.appendChild(lien);
-	
+
 	body.appendChild(content);
 
 	//------------------submit du form ACHAT----------------
@@ -628,27 +628,27 @@ function afficherActionPerso(symbole, nbActions ) {
 	input.setAttribute("type","hidden");
 	input.setAttribute("name","achat");
 	input.setAttribute("value",elt.name+";"+elt.symbole+";"+elt.données[elt.données.length-1].ask);
-	
+
 	form.appendChild(input);
 	content.appendChild(form);
 
 
 	var lien=document.createElement("a");
-	lien.setAttribute("href","#");	
-	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_achat').submit(); return false;");	
+	lien.setAttribute("href","#");
+	lien.setAttribute("onclick","document.getElementById('"+elt.name+"_achat').submit(); return false;");
 	var buttonAchat = document.createElement("button");
 	buttonAchat.setAttribute("name","achat-action");
 	var textB1=document.createTextNode("Acheter Vincent");
 	buttonAchat.appendChild(textB1);
 	lien.appendChild(buttonAchat);
 	content.appendChild(lien);
-	
+
 	body.appendChild(content);
 	//----------------------------------------------
-	
+
 	graph(elt);
-	
-	
+
+
 
 }
 
@@ -660,7 +660,7 @@ init();
 function graph(elt){
 
 	var body = document.getElementById("chart");
-	
+
 	//suppression ancienne valeur
 	var del= document.getElementById("chart-bid");
 	if(del!=null)
@@ -668,7 +668,7 @@ function graph(elt){
 	del= document.getElementById("chart-ask");
 	if(del!=null)
 		body.removeChild(del);
-	
+
 	//creation select
 	var canv = document.createElement("canvas");
 	canv.setAttribute("width","100");
@@ -680,18 +680,17 @@ function graph(elt){
 	canv2.setAttribute("height","100");
 	canv2.setAttribute("id","chart-ask");
 	body.appendChild(canv2);
-	
-	
+
 
 	var date=[];
 	var bid=[];
 	var ask=[];
-	
+
 	for(var i=0; i<elt.données.length; i++){
 		date.push(elt.données[i].realDate +" "+ elt.données[i].realTime);
 		bid.push(elt.données[i].bid);
 		ask.push(elt.données[i].ask);
-		
+
 	}
 
 	Chart.defaults.global.maintainAspectRatio = false;
@@ -707,7 +706,7 @@ function graph(elt){
 	Chart.defaults.global.responsive = true;
 	Chart.defaults.global.scaleLineColor = "black";
 	Chart.defaults.global.scaleFontSize = 16;
-	
+
 	var lineChartDataBid = {
     //labels: ["Data 1", "Data 2", "Data 3", "Data 4", "Data 5", "Data 6", "Data 7"],
     labels: date,
@@ -721,7 +720,7 @@ function graph(elt){
     ]
 
 	}
-	
+
 	var lineChartDataAsk = {
     labels: date,
     datasets: [{
@@ -734,20 +733,20 @@ function graph(elt){
 
 	}
 
-	
+
 
 	var ctx = document.getElementById("chart-bid").getContext("2d");
-	
+
 	var LineChartBid = new Chart(ctx).Line(lineChartDataBid, {
 		pointDotRadius: 2,
 		bezierCurve: false,
 		scaleShowVerticalLines: false,
 		scaleGridLineColor: "black"
 	});
-	
-	
+
+
 	var ctx = document.getElementById("chart-ask").getContext("2d");
-	
+
 	var LineChartAsk = new Chart(ctx).Line(lineChartDataAsk, {
 		pointDotRadius: 2,
 		bezierCurve: false,
@@ -756,10 +755,10 @@ function graph(elt){
         //pointDot: false,
 		//pointLabelFontSize: 20
 	});
-	
-	
-	
-	
+
+
+
+
 }
 
 

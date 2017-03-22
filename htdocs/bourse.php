@@ -35,24 +35,24 @@ function messageEreur(){
           </div>
 
       </div>
-       
+
         <div id="ids"></div>
         <br/>
         <div id="element"></div>
         <div id="buttons"></div>
         <br/>
         <br/>
-        <div id="chart">
+        <div id="chart" style="width:600px; height:350px;">
 			<canvas id="chart-bid" width="200" height="200"></canvas>
 			<canvas id="chart-ask" width="200" height="200"></canvas>
 		</div>
 
-	
 
 
-      
-      
-   
+
+
+
+
     </div> <!-- /container -->
   </body>
 </html>
