@@ -8,7 +8,7 @@ Pour ce projet, nous avons tout d'abord utilisé le framework Bootstrap permetta
 
 **Récupération des données de l'API**
 *recup_donnee.php*
-Appelle l'API en fonction d'un symbole (*ex: FB, AAPL*) via curl.
+Appelle l'API en fonction d'un symbole (*ex: FB, AAPL*) via curl.  
 Curl renvoie un csv, qu'on va encode en json et envoyer au javascript (api.js).
 api.js se chargera d'ajouter la nouvelle donnée au json (structure détaillée plus bas).
 
