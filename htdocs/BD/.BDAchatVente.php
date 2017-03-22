@@ -89,7 +89,6 @@ function achat($tab,$mail,$argent){
     $prep->execute();
     $res=$prep->fetchAll();
 
-
     $_SESSION["argent"]=$_SESSION["argent"]-$tab[2];
     $_SESSION["transaction"]="Achat Reussis pour l'action ".$tab[0];
     recupNom($_SESSION["mail"]);
@@ -147,6 +146,7 @@ function vente($tab,$nbAction,$mail,$argent){
     $_SESSION["argent"]=$_SESSION["argent"]+($nb*$tab[2]);
     $_SESSION["transaction"]="Vente Reussis pour l'action ".$tab[0]." au nombre de ".$nbAction;
     recupNom($_SESSION["mail"]);
+
     header('Location: ./../profil.php');
 }
 

@@ -63,8 +63,9 @@ gererActionsUser();
         </ul>
 
       <div class="tab-content">
-
+	<pre><?php var_dump($_SESSION["actions"]);?></pre>
           <div id="actions" class="tab-pane fade in active">
+
               <?php echo messageEreurAction(); ?>
 				<div id="ids"></div>
 				<br/>
