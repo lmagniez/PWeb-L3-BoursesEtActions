@@ -23,3 +23,8 @@ a:hover,a:visited, a{
 	text-decoration: none;
 	text-align: center;
 }
+
+.monStyle{
+	border-radius: 20px;
+	background-color: white;
+}

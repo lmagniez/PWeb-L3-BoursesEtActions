@@ -462,14 +462,6 @@ function afficherActionAccueil(symbole) {
 
 	//creation bouton
 
-	var buttonAchat = document.createElement("button");
-	buttonAchat.setAttribute("name","ajout-favoris");
-	buttonAchat.setAttribute("value",elt.symbole);
-	var textB1=document.createTextNode("Ajouter aux favoris");
-	buttonAchat.appendChild(textB1);
-	content.appendChild(buttonAchat);
-
-
 	var form=document.createElement("form");
 	form.setAttribute("id",elt.name+"_achat");
 	form.setAttribute("method","post");
@@ -584,7 +576,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	ligne.appendChild(cell1);
 	ligne.appendChild(cell2);
 	ligne.appendChild(cell3);
-	
+
 
 	//------------------submit du form Vendre----------------
 	var form=document.createElement("form");
@@ -614,7 +606,7 @@ function afficherActionPerso(symbole, nbActions ) {
 	form.appendChild(select);
 	form.appendChild(input);
 	cell1.appendChild(form);
-	
+
 	body.appendChild(content);
 
 	var lien=document.createElement("a");
@@ -641,9 +633,18 @@ function afficherActionPerso(symbole, nbActions ) {
 	input.setAttribute("name","achat");
 	input.setAttribute("value",elt.name+";"+elt.symbole+";"+elt.données[elt.données.length-1].ask);
 
-	form.appendChild(input);
-	content.appendChild(form);
+	var select = document.createElement("select");
+	select.setAttribute("id","nb-vente");
+	select.setAttribute("name","nb-vente");
 
+	//opt du form
+	for(var i=1; i<=nbActions; i++) {
+		var opt=document.createElement("option");
+		opt.setAttribute("value",i);
+		var txt=document.createTextNode(i);
+		select.appendChild(opt);
+		opt.appendChild(txt);
+	}
 
 	var lien=document.createElement("a");
 	lien.setAttribute("href","#");
@@ -653,8 +654,12 @@ function afficherActionPerso(symbole, nbActions ) {
 	var textB1=document.createTextNode("Acheter");
 	buttonAchat.appendChild(textB1);
 	lien.appendChild(buttonAchat);
-	
 	cell3.appendChild(lien);
+
+	form.appendChild(input);
+	content.appendChild(form);
+
+
 
 	body.appendChild(content);
 	//----------------------------------------------

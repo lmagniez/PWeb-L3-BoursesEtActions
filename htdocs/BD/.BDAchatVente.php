@@ -18,7 +18,7 @@ function achat($tab,$mail,$argent){
         header('Location: ./../bourse.php');
         return;
     }
-
+	
     global $pdo;
     global $queryRecupIDAction;
     global $queryInsertAction;
@@ -90,7 +90,7 @@ function achat($tab,$mail,$argent){
     $res=$prep->fetchAll();
 
     $_SESSION["argent"]=$_SESSION["argent"]-$tab[2];
-    $_SESSION["transaction"]="Achat Reussis pour l'action ".$tab[0];
+    $_SESSION["transaction"]=htmlspecialchars("Achat Reussis pour l'action ".$tab[0],ENT_QUOTES);
     recupNom($_SESSION["mail"]);
     header('Location: ./../profil.php');
 }
@@ -144,13 +144,15 @@ function vente($tab,$nbAction,$mail,$argent){
     $res=$prep->fetchAll();
 
     $_SESSION["argent"]=$_SESSION["argent"]+($nb*$tab[2]);
-    $_SESSION["transaction"]="Vente Reussis pour l'action ".$tab[0]." au nombre de ".$nbAction;
+    $_SESSION["transaction"]=htmlspecialchars("Vente Reussis pour l'action ".$tab[0]." au nombre de ".$nbAction,ENT_QUOTES);
     recupNom($_SESSION["mail"]);
 
     header('Location: ./../profil.php');
 }
 
+var_dump($_POST);
 if(array_key_exists('achat', $_POST)){
+	
     achat(explode(";",$_POST["achat"]),$_SESSION["mail"],$_SESSION["argent"]);
 }
 

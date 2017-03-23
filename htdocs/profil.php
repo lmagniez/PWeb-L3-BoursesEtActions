@@ -13,7 +13,7 @@ function messageEreurProfil(){
 }
 
 function messageEreurAction(){
-    if(isset($_SESSION['transaction'])){
+    if(isset($_SESSION['transaction']) && $_SESSION['transaction']!="" ){
           return "<div class=\"alert alert-success\" style=\"text-align:center;\"><strong>Success!</strong> ".$_SESSION['transaction']." </div>";
     }
 }

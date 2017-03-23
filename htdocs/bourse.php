@@ -3,7 +3,9 @@ require_once("header.php");
 
 function messageEreur(){
     if(isset($_SESSION['transaction'])){
-        if($_SESSION['transaction'] != "Probleme Achat" ){
+
+		if($_SESSION['transaction']==""){}
+        else if($_SESSION['transaction'] != "Probleme Achat"){
             return "<div class=\"alert alert-success\" style=\"text-align:center;\"><strong>Success!</strong> ". $_SESSION['transaction'] ." </div>";
         }
         else{
@@ -30,7 +32,7 @@ function messageEreur(){
 
 
            <div id="recherche" class="tab-pane fade">
-               <p>Le petit filtre des familles</p>
+               <p></p>
 
           </div>
 

@@ -33,11 +33,11 @@ if(isset($_POST)){
  	$prep->bindValue(':mailorigin',$_SESSION['mail'], PDO::PARAM_STR);
  	$prep->execute();
 
-	$_SESSION['messageUpdate']="good";
-	$_SESSION['nom']=$_POST["Nom"];
-	$_SESSION['prenom']=$_POST["Prenom"];
-	$_SESSION['mail']=$_POST["Mail"] ;
-	$_SESSION['mdp']=$_POST["mdp"];
-	$_SESSION['argent']=$_POST["somme"];
+	$_SESSION['messageUpdate']=htmlspecialchars("good",ENT_QUOTES);
+	$_SESSION['nom']=htmlspecialchars($_POST["Nom"],ENT_QUOTES);
+	$_SESSION['prenom']=htmlspecialchars($_POST["Prenom"],ENT_QUOTES);
+	$_SESSION['mail']=htmlspecialchars($_POST["Mail"] ,ENT_QUOTES);
+	$_SESSION['mdp']=htmlspecialchars($_POST["mdp"],ENT_QUOTES);
+	$_SESSION['argent']=htmlspecialchars($_POST["somme"],ENT_QUOTES);
 	header('Location: ./../profil.php');
 }
