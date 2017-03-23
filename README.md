@@ -25,6 +25,13 @@ Appel ajax effectué dans le JavaScript, appelle save_categorie.php.
 *api.js*  
 Utilisation de Graph.js et génération dynamique du HTML avec DOM.  
 
+
+Notes Préliminaires
+============
+
+Pour accéder aux fichiers .php faisant la connection à la base de donnée, aller dans le dossier BD, et afficher les fichiers cachés. 
+(.BDInscription, etc...)
+
 I- Pages du site
 ============
 1- Login  
@@ -127,4 +134,6 @@ On va stocker les 15 dernières données dans un tableau. On ajoute une donnée 
  }, [...]
  ]
 ~~~
+
+
 
